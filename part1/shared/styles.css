@@ -1,0 +1,187 @@
+/*
+	File: styles.css
+	Purpose: Handles all TMA2 styles
+	Assignment: COMP466 TMA2, Part 1
+	Date: May 10, 2021
+	Copyright: Brad Edwards, 2021
+*/
+
+/****** Bookmarks Area *******/
+
+#bookmarksDiv {
+	border: 2px solid grey;
+	border-radius: 25px;
+	flex: 2;
+	padding: 0 5% 0 5%;
+}
+
+/******* General ******/
+
+body, html {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.flexcontainer {
+	display: flex;
+}
+
+#mainContentDiv {
+	display: flex;
+	flex-grow: 1;
+}
+
+/******* Login/Registration *******/
+
+.formButtonLeft {
+	margin-right: 10px;
+}
+
+.formButtonRight {
+	margin-left: 10px;
+}
+
+.formDiv {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.formDiv input {
+	flex: 2;
+	
+}
+
+.formDiv label {
+	flex: 1;
+}
+
+#loginForm, #registrationForm {
+	margin-top: 40px;
+	width: auto;
+}
+
+#loginFormDiv, #registrationFormDiv {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#loginFormDiv, #registrationFormDiv h2 {
+	text-align: center;
+}
+
+#registrationConfirmPasswordInput {
+	/* Otherwise Confirm Password label wrap doubles height of input */
+	height: 50%;
+}
+
+/******* Main Menu *******/
+
+#menuDiv {
+	border: 2px solid grey;
+	border-radius: 25px;
+	flex: 0 1 auto;
+	margin-right: 10px;
+	padding: 35px;
+	text-align: left;
+}
+
+#mainMenuList {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+#mainMenuList a {
+	text-decoration: none;
+	font-size: 125%;
+}
+
+#UserLinks {
+	display: none;
+}
+
+#YourLinksListElement {
+	display: none;
+}
+
+/******* Navbar *******/
+#navbar {
+	align-content: center;
+}
+
+#navbar a {
+	font-size: 1.25em;	
+	text-decoration: none;
+	width: 50%;
+}
+
+#navbarLogin, #navbarLogout {
+	padding-right: 10px;
+	text-align: right;
+}
+
+#navbarTitle h2 {
+	padding-left: 30px;
+}
+
+/******* User Auth and Reg *******/
+.is-invalid {
+	color: red;
+}
+
+/******* User Links *******/
+
+#addBookmarkDiv {
+	display: flex;
+	flex: 0 0 auto;
+	margin: 25px 0 25px 0;
+}
+
+#addBookmarkDiv label {
+	flex: 0 0 auto;
+}
+
+#addBookmarkErrorMessage {
+	margin: 0 0 0 20px;
+}
+
+#addNewBookmarkButton {
+	flex: 0 0 auto;
+	min-width: 50px;
+}
+
+#bookmarksDiv {
+	display: flex;
+	flex-flow: column;
+}
+
+#newBookmarkAddress {
+	flex: 0.5 0 auto;
+	margin: 0px 10px 0px 10px;
+}
+
+#newBookmarkDiv {
+	flex: 0 0 auto;
+}
+
+#userLinksDiv {
+	flex: 1 0 auto;
+}
+
+#userLinksTable {
+	border: 1px solid black;
+	width:  100%;
+}
+
+#userLinksTable td {
+	text-align: left;
+	padding: 10px;
+}
+
+#userLinksTable tr:nth-child(even) {
+	background-color: lightgrey;
+}
