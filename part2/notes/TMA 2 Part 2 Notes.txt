@@ -1,0 +1,45 @@
+TMA 2 Part 2 Notes
+
+Hours: 7
+
+Database
+
+users -> user_id, username, passwd, user_category_id, student_id, instructor_id
+user_categories -> user_category_id, category_name
+students -> student_id
+instructors -> instructor_id
+courses -> course_id, name, number
+session_instructors -> session_instructor_id, course_id, instructor_id, session_id
+sessions -> session_id, course_id, start_date
+modules -> module_id, course_id, name, content
+assignment -> assignment_id, course_id, name, content
+quizzes -> quiz_id, course_id, name, content
+registrations -> registration_id, student_id, course_id, date
+course_grades -> course_grade_id, student_id, course_id, grade
+assignment_grades -> student_id, assignment_id, grade
+
+lms_server - OptimusPrime7! (usual usage rights to lms_db)
+lms_db
+
+created tables and constraints (see saved sql files), added data to user_categories
+
+EML
+
+-Course (form to create/edit within LMS), need EML parser for load from file?
+-Module (editor? at least upload text file)
+-Assignment (editor? at least upload text file)
+-Quiz (editor? at least upload text file)
+
+Pages
+
+Landing
+Login
+Register
+Student landing
+Instructor landing
+Student course page
+Student module page
+Student quiz page
+Add course page
+Add/edit module page
+Add/edit quiz page
