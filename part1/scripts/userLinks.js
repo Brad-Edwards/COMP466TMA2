@@ -40,7 +40,13 @@ function addValidBookmark() {
 	console.log("sending request");
 	// Add bookmark to user list
 	// Security? Need to clean user inputs?
-	url = getCurrentAddress() + "/scripts/bookmarker.php?add=" + document.getElementById('newBookmarkAddress').value;
+	var url = getCurrentAddress() + "/scripts/bookmarker.php?add=";	
+	if (arguments.length == 0) {
+		url += document.getElementById('newBookmarkAddress').value
+	} else {
+		url += arguments[0];
+	}
+	
 	var request = new XMLHttpRequest();
 	request.open("GET", url, true);
 	// Set up async call
@@ -48,12 +54,16 @@ function addValidBookmark() {
 		if (this.readyState == 4 && this.status == 200) {
 			if (isNaN(parseInt(request.responseText))) {
 				window.alert("Could not add new bookmark\n" + request.responseText);
+				reloadUserlinks();
+				return false;
 			} else if (parseInt(request.responseText.trim()) > 0) {
-				window.alert("New bookmark added.");
+				return true;
+				reloadUserlinks();
 			} else {
+				return false;
+				reloadUserlinks();
 				window.alert("Could not add new bookmark. It might already exist.");
 			}
-			reloadUserlinks();
 		}
 	}	
 	request.send();
@@ -63,29 +73,32 @@ function addValidBookmark() {
 // param: ???
 // returns: void
 function deleteBookmark(e) {
-	console.log("deleting");
+	// Don't error out into an invalid state
+	e.preventDefault();
 	var address = e.currentTarget				// Delete button
-					.parentNode					// td tag containing edit button
+					.parentNode					// td tag containing delete button
 					.parentNode					// tr tag containing url, edit button and delete button
 					.firstChild					// td tag containing url
 					.firstChild					// Text input box
-					.value;						// URL to delete
-	console.log("sending request");
+					.innerHTML;						// URL to delete
 	// Add bookmark to user list
 	// Security? Need to clean user inputs?
-	url = getCurrentAddress() + "/scripts/bookmarker.php?remove=" + address;
+	var url = getCurrentAddress() + "/scripts/bookmarker.php?remove=" + address;
 	var request = new XMLHttpRequest();
 	request.open("GET", url, true);
 	// Set up async call
 	request.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
-			console.log(request.responseText);
 			if (isNaN(parseInt(request.responseText))) {
+				console.log(request.responseText);
 				window.alert("Could not remove bookmark\n" + request.responseText);
+				reloadUserlinks();
+				return false;
 			} else if (parseInt(request.responseText.trim()) > 0) {
-				window.alert("Bookmark removed.");
-			} 
-			reloadUserlinks();
+				console.log(request.responseText);
+				reloadUserlinks();
+				return true;				
+			} 			
 		}
 	}	
 	request.send();
@@ -107,8 +120,12 @@ function editBookmark(e) {
 	var url = getCurrentAddress();
 	// change bookmark row cell contents to a text input field
 	var oldCellContents = addressCell.innerHTML;
-	addressCell.innerHTML = "<input type='text' placeholder='" + address + "'><input id='editOkButton' type='button' value'OK'>";
+	addressCell.innerHTML = "<input type='text' id='editingBookmark'" placeholder='" + currentAddress + "'><input id='editOkButton' type='button' value='OK'>";
 	addressCell.lastChild.addEventListener('click', checkBookmarkEdit);
+}
+
+function changeBookmark(url) {
+	var editInput = document.getElementsByClassName
 }
 
 function checkBookmarkEdit(e) {
@@ -117,11 +134,24 @@ function checkBookmarkEdit(e) {
 
 	var inputBox = e.currentTarget				// OK button
 					.previousElementSibling;	// Input box
-	var oldAddress = inputBox.placeholder;
+	var oldAddress = inputBox.placeholder;		
 	var newAddress = inputBox.value;
 
 	// Only validate if there is a change
 	if (oldAddress != newAddress) {
+		if (!validateBookmark(newAddress,changeBookmark)) {
+			window.alert("Edited bookmark is not valid.");			
+		} else {
+			var editInput = document.getElementById("editingBookmark");
+			var addressCell = editInput.parentNode; // td tag
+			if (deleteBookmark(oldAddress)) {
+
+			} else {
+				add
+			}
+		}
+		reloadUserlinks();
+	} else {
 
 	}
 }

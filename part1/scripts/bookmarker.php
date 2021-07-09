@@ -92,8 +92,10 @@
 						// Remove bookmark
 						// Create query
 						$query2 = 'SET @url_id = (SELECT url_id FROM urls WHERE address="' . $url . '");';
-						$query2 .= 'SET @user_id = (SELECT user_id FROM users WHERE username="' . $username . '";)';
+						$query2 .= 'SET @user_id = (SELECT user_id FROM users WHERE username="' . $username . '");';
 						$query2 .= 'DELETE FROM bookmarks WHERE url_id=@url_id AND user_id=@user_id;';
+						$query2 .= 'SELECT ROW_COUNT() INTO @count1;';
+						$query2 .= 'SELECT @count1;';
 
 						$db2 = dbConnect();
 						$row = null;
