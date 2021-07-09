@@ -14,7 +14,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="/TMA2/part1/shared/styles.css">
+		<link rel="stylesheet" type="text/css" href="./shared/styles.css">
 	</head>
 	<body>
 		<?php

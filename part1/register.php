@@ -125,7 +125,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<Title>Registration</Title>
-		<link rel="stylesheet" type="text/css" href="/TMA2/part1/shared/styles.css">
+		<link rel="stylesheet" type="text/css" href="./shared/styles.css">
 		<?php include 'navbar.php'; ?>
 	</head>
 	<body>

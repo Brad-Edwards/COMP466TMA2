@@ -95,8 +95,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="/TMA2/part1/shared/styles.css">
-		<script type="text/javascript" src="/TMA2/part1/scripts/userLinks.js"></script>
+		<link rel="stylesheet" type="text/css" href="./shared/styles.css">
+		<script type="text/javascript" src="./scripts/userLinks.js"></script>
 	</head>
 	<body>
 		<!--

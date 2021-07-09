@@ -107,7 +107,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<Title>Login</Title>
-		<link rel="stylesheet" type="text/css" href="/TMA2/part1/shared/styles.css">
+		<link rel="stylesheet" type="text/css" href="./shared/styles.css">
 		<nav>
 			<?php include 'navbar.php'; ?>
 		</nav>

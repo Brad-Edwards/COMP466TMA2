@@ -39,9 +39,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<Title>Marked</Title>
-		<link rel="stylesheet" type="text/css" href="/TMA2/part1/shared/styles.css">
+		<link rel="stylesheet" type="text/css" href="./shared/styles.css">
 		<?php include 'navbar.php'; ?>
-		<script type="text/javascript" src="/TMA2/part1/scripts/marked.js"></script>
+		<script type="text/javascript" src="./scripts/marked.js"></script>
 	</head>
 	<body>
 		<div id="mainContentDiv">
