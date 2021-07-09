@@ -39,9 +39,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<Title>Marked</Title>
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="./shared/styles.css">
 		<?php include 'navbar.php'; ?>
 		<script type="text/javascript" src="./scripts/marked.js"></script>
+=======
+		<link rel="stylesheet" type="text/css" href="/shared/styles.css">
+		<?php include 'navbar.php'; ?>
+		<script type="text/javascript" src="/scripts/marked.js"></script>
+>>>>>>> d451e5281994f69c8216017a7989427f9c58ead0
 	</head>
 	<body>
 		<div id="mainContentDiv">
