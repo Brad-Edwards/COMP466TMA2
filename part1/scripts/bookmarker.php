@@ -28,9 +28,13 @@
 	if (isset($_GET['add']) && trim($_GET['add']) != '') {
 		$action = "add";
 		$url = trim($_GET['add']);
-	} else {
+	} else if (isset($_GET['remove']) && trim($_GET['remove']) != '') {
 		$action = "remove";
 		$url = trim($_GET['remove']);
+	} else if (isset($_GET['old']) && trim($_GET['old']) != '' && isset($_GET['new']) && trim($_GET['new']) != '') {
+		$action = "change";
+		$oldBookmark = trim($_GET['old']);
+		$newBookmark = trim($_GET['new']);
 	}
 
 	$db1 = @dbConnect();
@@ -88,7 +92,7 @@
 							echo "There was a database error when adding your bookmark.";
 							return;
 						}	
-					} else {
+					} else if ($action == 'remove') {
 						// Remove bookmark
 						// Create query
 						$query2 = 'SET @url_id = (SELECT url_id FROM urls WHERE address="' . $url . '");';
@@ -112,6 +116,44 @@
 							echo "Could not ask the database to delete your bookmark.";
 							@dbClose($db2);
 						}						
+					} else if ($action == 'change') {
+						// Change bookmark
+						// Create query
+						// Make query atomic
+						// Remove old bookmark
+						$query2 = 'START TRANSACTION;';
+						$query2 .= 'SET @url_id = (SELECT url_id FROM urls WHERE address="' . $oldBookmark . '");';
+						$query2 .= 'SET @user_id = (SELECT user_id FROM users WHERE username="' . $username . '");';
+						$query2 .= 'DELETE FROM bookmarks WHERE url_id=@url_id AND user_id=@user_id;';
+						$query2 .= 'SELECT ROW_COUNT() INTO @count1;';
+						// Add new bookmark
+						$query2 .= 'INSERT INTO urls (address) SELECT "' . $newBookmark . '" FROM dual WHERE NOT EXISTS (SELECT * FROM urls WHERE address = "' . $newBookmark . '");';
+						$query2 .= 'SELECT ROW_COUNT() INTO @count2;';
+						// Set values needed for bookmark insert
+						$query2 .= 'SET @userid = (SELECT user_id FROM users WHERE username = "' . $username . '");';
+						$query2 .= 'SET @urlid = (SELECT url_id FROM urls WHERE address = "' . $newBookmark . '");';
+						// Insert into bookmarks as long as it's unique
+						$query2 .= 'INSERT INTO bookmarks (user_id, url_id) SELECT @userid, @urlid FROM dual WHERE NOT EXISTS (SELECT * FROM bookmarks WHERE user_id=@userid AND url_id=@urlid);';
+						$query2 .= 'SELECT ROW_COUNT() INTO @count3;';
+						$query2 .= 'COMMIT;';
+						$query2 .= 'SELECT (@count1 + @count2 + @count3);';
+
+						$db2 = dbConnect();
+						$row = null;
+						if ($db2->multi_query($query2)) {
+							do {
+								if ($resultSet = $db2->store_result()) {
+									while ($row = $resultSet->fetch_row()) {
+										echo $row[0];
+									}
+								}
+							} while ($db2->next_result());
+							echo "results found?";
+							@dbClose($db2);
+						} else {
+							echo "Could not edit your bookmark.";
+							@dbClose($db2);
+						}
 					}
 				} 
 			} else {
