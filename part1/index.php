@@ -1,12 +1,11 @@
 
-<!--
+<?php 
+	/*
 	File: index.php
 	Purpose: Start page for bookmarking app
 	Date: May 18, 2021
 	Copyright: Brad Edwards, 2021
--->
-
-<?php 
+	*/
 	// Start session for application
 	session_start();
 
@@ -41,7 +40,6 @@
 		<Title>Marked</Title>
 		<link rel="stylesheet" type="text/css" href="./shared/styles.css">
 		<?php include 'navbar.php'; ?>
-		<script type="text/javascript" src="./scripts/marked.js"></script>
 	</head>
 	<body>
 		<div id="mainContentDiv">
