@@ -9,7 +9,7 @@
 
 	$db = "lms";
 	$dbHost = "localhost";
-	$dbPassword = "COMP482!!";
+	$dbPassword = "COMP466!";
 	$dbUser = "lms_server";
 
 	function dbClose($dbConnection) {

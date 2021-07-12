@@ -9,7 +9,7 @@
 
 	$db = "bookmarksdb";
 	$dbHost = "localhost";
-	$dbPassword = "COMP482!";
+	$dbPassword = "COMP466!";
 	$dbUser = "bookmarks_server";
 
 	function dbClose($dbConnection) {
