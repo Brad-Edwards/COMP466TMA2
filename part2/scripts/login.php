@@ -52,7 +52,7 @@
 					$loginError = "Could not connect to the database.";
 				} else {
 					// Prep query
-					$query = "SELECT user_id, username, password FROM users WHERE username = ?";
+					$query = "SELECT user_id, username, passwd FROM users WHERE username = ?;";
 
 					if ($stmt = mysqli_prepare($db, $query)) {
 						// Set query variables
@@ -80,7 +80,7 @@
 										$_SESSION["loggedIn"] = true;
 										$_SESSION["username"] = $username;
 
-										header("location: index.php");
+										header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
 									} else {
 										// Password fail
 										$loginError = "Invalid username or password.";
@@ -92,6 +92,7 @@
 						}
 					} else {
 						$loginError = "Something went wrong. Please try again.";
+						error_log($db->error);
 					}
 				}
 				// Suppress errors in case db connection never opened				
@@ -113,7 +114,7 @@
 		</nav>
 	</head>
 	<body>
-		<div id="loginFormDiv">
+		<div id="loginFormDiv" class="boxShadow">
 			<h2>Login</h2>
 			<?php 
 				// Display any login errors
@@ -122,17 +123,17 @@
 				}
 			?>
 			<form id="loginForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-				<div class="formDiv">
+				<div class="formDiv flexContainer">
 					<label>Username</label>
 					<input type="text" name="username" class="formElement <?php echo (!empty($usernameError)) ? 'is-invalid' : ''; ?>" autofocus>
 					<span class="invalidFeedback"><?php echo $usernameError; ?></span>
 				</div>
-				<div class="formDiv">
+				<div class="formDiv flexContainer">
 					<label>Password</label>
 					<input type="password" name="password" class="formElement <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>">
 					<span class="invalidFeedback"><?php echo $passwordError; ?></span>
 				</div>
-				<div class="formDiv">
+				<div class="formDiv flexContainer">
 					<input class="formButtonLeft" type="submit" name="submitButton" class="formButton defaultButton" value="Submit">
 					<input class="formButtonRight" type="submit" name="resetButton" class="formButton alternateButton" value="Reset">
 				</div>

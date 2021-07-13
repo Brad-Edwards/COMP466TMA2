@@ -4,6 +4,8 @@
 	Purpose: start page for LMS app
 	Date: July 10, 2021
 	Copyright: Brad Edwards, 2021
+
+	Hours: 8
 	*/
 
 	// Start session for application

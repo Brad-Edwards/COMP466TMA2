@@ -1,0 +1,104 @@
+/*
+	File: styles.css
+	Purpose: Handles all TMA2 styles
+	Assignment: COMP466 TMA2, Part 2
+	Date: July 13, 2021
+	Copyright: Brad Edwards, 2021
+*/
+
+/******* General ******/
+
+body, html {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.boxShadow {
+	border-color: gray;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 5px 5px gray;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.flexContainer {
+	display: flex;
+}
+
+#mainContentDiv {
+	display: flex;
+	flex-grow: 1;
+}
+
+/******* Login/Registration *******/
+
+.formButtonLeft {
+	margin-right: 10px;
+}
+
+.formButtonRight {
+	margin-left: 10px;
+}
+
+.formDiv {
+	margin-bottom: 10px;
+}
+
+.formDiv input {
+	flex: 2;
+	
+}
+
+.formDiv label, select {
+	flex: 1;
+}
+
+#loginForm, #registrationForm {
+	margin-top: 40px;
+	width: auto;
+}
+
+#loginFormDiv, #registrationFormDiv {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+	padding: 30px;
+}
+
+#loginFormDiv, #registrationFormDiv h2 {
+	text-align: center;
+}
+
+#registrationConfirmPasswordInput {
+	/* Otherwise Confirm Password label wrap doubles height of input */
+	height: 50%;
+}
+
+/******* Navbar *******/
+#navbar {
+	align-content: center;
+}
+
+#navbar a {
+	font-size: 1.25em;	
+	text-decoration: none;
+	width: 50%;
+}
+
+#navbarLogin, #navbarLogout {
+	padding-right: 10px;
+	text-align: right;
+}
+
+#navbarTitle h2 {
+	padding-left: 30px;
+}
+
+/******* User Auth and Reg *******/
+.is-invalid {
+	color: red;
+}

@@ -10,11 +10,11 @@
 
 <html>
 	<head>
-		<div id="navbar" class="flexcontainer">
-			<a id="navbarTitle" href="index.php"><h2>Studious</h2></a>
+		<div id="navbar" class="flexContainer boxShadow">
+			<a id="navbarTitle" href="http://34.213.198.190/COMP466TMA2/part2/index.php"><h2>Studious</h2></a>
 			<?php 
 				// Login or logout button depending on login state
-				if (isse($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+				if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
 					echo "<a id='navbarLogout' href='index.php?logout=true'><h4>Logout</h4</a>";
 				} else {
 					// Don't display login/register on login and registration pages
