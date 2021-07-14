@@ -1,2 +1,0 @@
-ALTER TABLE users
-MODIFY passwd VARCHAR(255);
