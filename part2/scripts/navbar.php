@@ -15,7 +15,7 @@
 			<?php 
 				// Login or logout button depending on login state
 				if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-					echo "<a id='navbarLogout' href='index.php?logout=true'><h4>Logout</h4</a>";
+					echo "<a id='navbarLogout' href='index.php?logout=true'><h4>Logout</h4></a>";
 				} else {
 					// Don't display login/register on login and registration pages
 					if (!$credentialPage) {

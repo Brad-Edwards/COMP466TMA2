@@ -6,7 +6,11 @@
 	Copyright: Brad Edwards, 2021
 */
 
-/******* General ******/
+/******* Content *******/
+
+
+
+/******* General *******/
 
 body, html {
 	display: flex;
@@ -101,4 +105,21 @@ body, html {
 /******* User Auth and Reg *******/
 .is-invalid {
 	color: red;
+}
+
+/****** Welcome *******/
+
+#welcomeDiv {
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+#welcomeDiv h1 {
+	text-align: center;
+}
+
+#welcomeDiv p {
+	margin-left, margin-right: auto;
+	text-align: justify-all;
 }

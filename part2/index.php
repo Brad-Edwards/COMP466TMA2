@@ -5,7 +5,7 @@
 	Date: July 10, 2021
 	Copyright: Brad Edwards, 2021
 
-	Hours: 8
+	Hours: 13
 	*/
 
 	// Start session for application
@@ -14,9 +14,18 @@
 	// Load database methods
 	require_once 'scripts/database_manager.php';
 
+	$isLoggedIn = false;
+
 	// Handle logout request if received
 	if (isset($_GET['logout']) && trim($_GET['logout'])) {
 		$_SESSION["loggedIn"] = false;
+	} 
+
+	$isLoggedIn = $_SESSION["loggedIn"];
+
+	if ($isLoggedIn) {
+		$username = trim($_SESSION["username"]);
+		$userRole = trim($_SESSION["role"]);
 	}
 
 	// For navbar display
@@ -30,9 +39,21 @@
 		<meta charset="UTF-8">
 		<Title>Studious</Title>
 		<link rel="stylesheet" type="text/css" href="shared/styles.css">
-		<?php include 'navbar.php'; ?>
+		<?php include 'scripts/navbar.php'; ?>
+		<script type="text/javascript">
+			var username = '<?php echo $_SESSION["username"];?>';
+			var userRole = '<?php echo $_SESSION["role"];?>';
+		</script>
 	</head>
 	<body>
-		
+		<div id="mainContentDiv" class="flexContainer">
+			<?php
+				if (!$isLoggedIn) {
+					include 'scripts/welcome.php';
+				} else {
+					include 'scripts/content.php';
+				}
+			?>
+		</div>
 	</body>
 </html>

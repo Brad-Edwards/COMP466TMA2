@@ -85,34 +85,21 @@
 			}
 
 			if (empty($usernameError) && empty($passwordError) & empty($confirmPasswordError)) {
-
-				$query = "INSERT INTO users (username, passwd, user_category_id) VALUES (?, ?, (SELECT user_category_id FROM user_categories WHERE category_name=?));";
-				$dbConnection = dbConnect();
 				$userRole = trim($_POST['roles']);
-				if ($stmt = mysqli_prepare($dbConnection, $query)) {
-					mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_role);
-					$param_username = $username;
-					// Only store hashed passwords in db
-					$param_password = password_hash($password, PASSWORD_DEFAULT);
-					$param_role = $userRole;
-
-					if (mysqli_stmt_execute($stmt)) {
-						// Registration successful
-
-						session_start();
-
-						// Username must be set to show user's links later.
-						$_SESSION["loggedIn"] = true;
-						$_SESSION["username"] = $username;
-
-						header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
-					} else {
-						// Registration fail
-						$registrationError = "Could not complete registration. Please try again later.";
-					}
+				error_log($username . " " . $password . " " . $userRole);
+				$query = "INSERT INTO users (username, passwd, user_category_id) VALUES (" . $username . "," . password_hash($password, PASSWORD_DEFAULT) . ", (SELECT user_category_id FROM user_categories WHERE category_name=" . $userRole . "));";
+				if ($userRole == 'student') {
+					$query .= "INSERT INTO students (user_id) VALUES (SELECT user_id FROM users WHERE username=" . $username . ");";
 				} else {
-					$registrationError = "Could not connect to the database. Please try again.";
+					$query .= "INSERT INTO instructors (user_id) VALUES (LAST_INSERT_ID());";
 				}
+
+				$dbConnection = dbConnect();
+				
+				if (!($stmt = $dbConnection->multi_query($query))) {
+					$registrationError = "Could not complete registration. Please try again later.";
+				}
+				error_log(mysqli_stmt_error($dbConnection));
 				// Suppress errors in case db connection never opened
 				@dbClose($dbConnection);
 			} 
@@ -127,7 +114,7 @@
 		<meta charset="UTF-8">
 		<Title>Registration</Title>
 		<link rel="stylesheet" type="text/css" href="../shared/styles.css">
-		<?php include '../navbar.php'; ?>
+		<?php include 'navbar.php'; ?>
 	</head>
 	<body>
 		<div id="registrationFormDiv" class="boxShadow">

@@ -80,6 +80,25 @@
 										$_SESSION["loggedIn"] = true;
 										$_SESSION["username"] = $username;
 
+										// Get user role
+										$query = "SELECT category_name FROM users INNER JOIN user_categories ON users.user_category_id = user_categories.user_category_id WHERE username = ?;";
+
+										if ($stmt = mysqli_prepare($db, $query)) {
+											mysqli_stmt_bind_param($stmt, "s", $param_username);
+											$param_username = $username;
+
+											if (mysqli_stmt_execute($stmt)) {
+												// Save results
+												mysqli_stmt_store_result($stmt);
+
+												mysqli_stmt_bind_result($stmt, $role);
+
+												mysqli_stmt_fetch($stmt);
+
+												$_SESSION['role'] = $role;
+											}
+										}
+
 										header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
 									} else {
 										// Password fail
@@ -110,7 +129,7 @@
 		<Title>Login</Title>
 		<link rel="stylesheet" type="text/css" href="../shared/styles.css">
 		<nav>
-			<?php include '../navbar.php'; ?>
+			<?php include 'navbar.php'; ?>
 		</nav>
 	</head>
 	<body>
