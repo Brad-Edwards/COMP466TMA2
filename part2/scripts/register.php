@@ -86,22 +86,29 @@
 
 			if (empty($usernameError) && empty($passwordError) & empty($confirmPasswordError)) {
 				$userRole = trim($_POST['roles']);
-				$query = "INSERT INTO users (username, passwd, user_category_id) VALUES (" . $username . "," . password_hash($password, PASSWORD_DEFAULT) . ", (SELECT user_category_id FROM user_categories WHERE category_name=" . $userRole . "));";
+				$query = "INSERT INTO users (username, passwd, user_category_id) VALUES ('" . $username . "','" . password_hash($password, PASSWORD_DEFAULT) . "', (SELECT user_category_id FROM user_categories WHERE category_name='" . $userRole . "'));";
 				if ($userRole == 'student') {
-					$query .= "INSERT INTO students (user_id) VALUES ((SELECT user_id FROM users WHERE username=" . $username . "));";
+					$query .= "INSERT INTO students (user_id) VALUES ((SELECT user_id FROM users WHERE username='" . $username . "'));";
 				} else {
-					$query .= "INSERT INTO instructors (user_id) VALUES ((SELECT user_id FROM users WHERE username=" . $username . "));";
+					$query .= "INSERT INTO instructors (user_id) VALUES ((SELECT user_id FROM users WHERE username='" . $username . "'));";
 				}
-
+				error_log($query);
 				$dbConnection = dbConnect();
 				
 				if (!$dbConnection->multi_query($query)) {
 					error_log(mysqli_error($dbConnection));
 					$registrationError = "Could not complete registration. Please try again later.";
 				}
-				// Suppress errors in case db connection never opened
-				@dbClose($dbConnection);
+
+
+				$_SESSION["loggedIn"] = true;
+				$_SESSION["username"] = $username;
+				$_SESSION["role"] = $userRole;
+
+				header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
 			} 
+			// Suppress errors in case db connection never opened
+			@dbClose($dbConnection);
 		}
 	}
 ?>
