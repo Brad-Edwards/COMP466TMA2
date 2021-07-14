@@ -86,20 +86,19 @@
 
 			if (empty($usernameError) && empty($passwordError) & empty($confirmPasswordError)) {
 				$userRole = trim($_POST['roles']);
-				error_log($username . " " . $password . " " . $userRole);
 				$query = "INSERT INTO users (username, passwd, user_category_id) VALUES (" . $username . "," . password_hash($password, PASSWORD_DEFAULT) . ", (SELECT user_category_id FROM user_categories WHERE category_name=" . $userRole . "));";
 				if ($userRole == 'student') {
-					$query .= "INSERT INTO students (user_id) VALUES (SELECT user_id FROM users WHERE username=" . $username . ");";
+					$query .= "INSERT INTO students (user_id) VALUES ((SELECT user_id FROM users WHERE username=" . $username . "));";
 				} else {
-					$query .= "INSERT INTO instructors (user_id) VALUES (LAST_INSERT_ID());";
+					$query .= "INSERT INTO instructors (user_id) VALUES ((SELECT user_id FROM users WHERE username=" . $username . "));";
 				}
 
 				$dbConnection = dbConnect();
 				
-				if (!($stmt = $dbConnection->multi_query($query))) {
+				if (!$dbConnection->multi_query($query)) {
+					error_log(mysqli_error($dbConnection));
 					$registrationError = "Could not complete registration. Please try again later.";
 				}
-				error_log(mysqli_stmt_error($dbConnection));
 				// Suppress errors in case db connection never opened
 				@dbClose($dbConnection);
 			} 
