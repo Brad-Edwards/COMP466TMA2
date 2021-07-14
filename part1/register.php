@@ -104,7 +104,7 @@
 						$_SESSION["loggedIn"] = true;
 						$_SESSION["username"] = $username;
 
-						header("location: index.php");
+						header("location: http://34.213.198.190/COMP466TMA2/part1/index.php");
 					} else {
 						// Registration fail
 						$registrationError = "Could not complete registration. Please try again later.";
