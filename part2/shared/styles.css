@@ -8,7 +8,16 @@
 
 /******* Content *******/
 
+#mainContentDiv {
+	margin-top: 10px;
+	padding: 10px;
+}
 
+#mainContentDiv ul {
+	list-style-type: none;
+	margin-right: 10px;
+	padding: 10px;
+}
 
 /******* General *******/
 

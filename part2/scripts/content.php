@@ -18,14 +18,14 @@
 		<?php if(trim($_SESSION["role"]) == 'student') : ?>
 			<nav>
 				<ul>
-					<a href=""><li>Register</li></a>
-					<a href=""><li>Grades</li></a>
-					<li></li>
 					<li>Your Courses</li>
 					<?php
 						// Get list of courses user is registered for
 						$query = "SELECT "
 					?>
+					<li><hr></li>
+					<a href=""><li>Register</li></a>
+					<a href=""><li>Grades</li></a>					
 				</ul>
 			</nav>
 		<?php else : ?>
