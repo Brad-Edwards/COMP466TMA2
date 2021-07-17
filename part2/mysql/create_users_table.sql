@@ -3,6 +3,8 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL UNIQUE,
     passwd VARCHAR(255) NOT NULL,
     user_category_id int NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_id),
     CONSTRAINT FK_users_user_categories_user_category_id FOREIGN KEY (user_category_id) REFERENCES user_categories(user_category_id)
 );

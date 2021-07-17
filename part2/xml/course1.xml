@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<course_type	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xmlns:h="https://www.atomiklabs.com"
+				xsi:SchemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml/LMSTypes.xsd">
+	<name>HTML and CSS</name>
+	<code>STU100</code>
+	<instructor>
+		<firstname>Brad</firstname>
+		<lastname>Edwards</lastname>
+		<instructor_id>4</instructor_id>
+	</instructor>
+	<summary>This course teaches the basics of HTML5 and CSS3.</summary>
+	<content>
+		<module_type>
+			<order>1</order>
+			<name>The Internet</name>
+			<summary>A brief history of the Internet.</summary>
+			<objectives>
+				<objective>Understand the origins of the Internet.</objective>
+				<objective>Understand the basics of technologies used to access the Internet.</objective>
+			</objectives>
+			<introduction>The Internet is a defining technology of the late 1900's and early 2000's. It has changed the way people communicate, buy, entertain themselves and work. This vast network is arguably among the most vital pieces of infrastructure of our modern age.</introduction>
+			<sections>
+				<section>
+					<order>1</order>
+					<title>The Web</title>
+					<text><![CDATA[ <p>The Internet is a global network of computers providing access to an enormous range of digital resources. The Internet evolved from ARPANET, an American military research from the 1960's. Internet protocols require the transmission of data between computers to be in chunks called packets. Packets have standardized formats that allow them to be routed between routers, switches and servers to their destinations. Some of the most important protocols used in the Internet are the Transmission Control Protocol and Internet protocols, referred to collectively as TCP/IP.</p><p>Multiple technologies are used together to create the web sites we access daily. HTML5, CSS and JavaScript are among the most important.</p><p>Most users access web sites using web browsers, applications which are responsible for fetching and rendering web pages from servers. While there are no standards for web browsers, browsers still provide a means for web pages to be viewed across many different platforms.</p><p>Web applications are multi-tiered and often feature a client, web server and a database server. In this three-tiered architecture, the database is bottom tier and maintains application data. The middle-tier sits between the top-tier (client tier) and the bottom tier and implements the application and presentation logic. The top-tier interprets data from the middle-tier and presents it to the user.</p><p>Many web servers exist to receive and respond to client requests. Server applications can be found to operate on any operating system. The most popular web server is Apache HTTP Server, most often run on a Linux operating system. Microsoft has developed the Internet Information Services (IIS) server for its own operating system.</p>]]></text>
+				</section>
+				<section>
+					<order>2</order>
+					<title>HTML</title>
+					<subsection>
+						<subtitle>Overview</subtitle>
+						<text><![CDATA[
+							]]></text>
+					</subsection>
+				</section>
+			</sections>
+		</module_type>
+	</content>
+</course_type>

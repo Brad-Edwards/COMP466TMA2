@@ -71,6 +71,7 @@
 				<xs:element name="sections">
 					<xs:complexType>
 						<xs:sequence minOccurs="1" maxOccurs="unbounded">
+							<xs:element name="order" type="xs:integer" />
 							<xs:element name="section">
 								<xs:complexType>
 									<xs:sequence>
