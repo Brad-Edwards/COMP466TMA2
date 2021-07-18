@@ -75,11 +75,13 @@
 							<xs:element name="section">
 								<xs:complexType>
 									<xs:sequence>
+										<xs:element name="order" type="xs:integer"/>
 										<xs:element name="title" type="xs:string" />
 										<xs:element name="text" minOccurs="0" maxOccurs="1" type="xs:string" />
 										<xs:element name="subsection" minOccurs="0" maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
+													<xs:element name="order" type="xs:integer"/>
 													<xs:element name="subtitle" minOccurs="0" maxOccurs="1" type="xs:string" />
 													<xs:element name="text" type="xs:string" />
 												</xs:sequence>

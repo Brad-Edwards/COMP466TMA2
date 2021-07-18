@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<course_type	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xmlns:h="https://www.atomiklabs.com"
+				xsi:SchemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml/LMSTypes.xsd">
+	<name>JavaScript</name>
+	<code>STU110<code>
+	<instructor>
+		<firstname>Brad</firstname>
+		<lastname>Edwards</lastname>
+		<instructor_id>4</instructor_id>
+	</instructor>
+	<summary>This course teaches the basics of JavaScript.</summary>
+	<content>
+		<module_type>
+			<order>1</order>
+			<name>JavaScript</name>
+			<summary>A short introduction to the JavaScript language.</summary>
+			<objectives>
+				<objective>Understand the traditional use of JavaScript.</objective>
+				<objective>Understand the basics of the JavaScript language and syntax.</objective>
+			</objectives>
+			<introduction>JavaScript is a programming language that can be used to turn HTML documents into dynamic pages which can do any number of things, from reacting to user input to executing complex logic.</introduction>
+			<sections>
+				<section>
+					<order>1</order>
+					<title>Introduction</title>
+					<text><![CDATA[<p>JavaScript is a programming language that can be used to turn static HTML documents into dynamic pages which can do any number of things, from reacting to user input to executing complex logic. The most current standardized version of JavaScript is ECMAScript 6, which is supported by most browsers, with the exception of Internet Explorer. JavaScript is not the only programming language  that can be used for web applications, but it is extremely common and is well-supported by web browsers.</p><p>Many different libraries exist to help developers create web sites. One of the most popular is jQuery. jQuery provides methods to simply working with HTML documents and provides a number of controls which can be integrated into web pages.</p><p>JavaScript programs, called scripts, can be run on the client-side or server-side. Client-side scripts execute within the user's browser and often manipulate the presentation of the web site. Server-side scripts execute on the server and are used to implement any logic required from the server.</p><p>Scripts can be included in HTML documents within &lt;script&gt; tags. Any text within the tags will be interpreted as JavaScript commands. Scripts can also be written in their own files, usually with .js extensions. All of the text within the file will be interpreted as JavaScript.  These files can be included by HTML documents, again using script tags, as follows:</p><pre><span class='singleIndent'>&lt;script type=\text/javascript\ src=\script.js\&gt;&lt;/script&gt</span></pre><p>Writing scripts in separate files allows them to be reused in multiple pages or in other projects and may allow IDEs or text editors to better interpret the file content and assist the developer.</p>]]></text>
+				</section>
+				<section>
+					<order>2</order>
+					<title>Syntax</title>
+					<text><![CDATA[<p>JavaScript shares quite a few similarities with other C-style languages, such as having statements terminated with semi-colons. For most statements, JavaScript is not whitespace sensitive. Whitespace and indentations can be used to improve code-readability without affecting code interpretation.<p><p>JavaScript uses single- or double-quotes for strings. Within strings, escaping characters works similarly to related languages (e.g. \\\ to escape a double-quote). Other string operators such as\\n for newlines also work. Also, spacing within strings does matter</p><p>Variables are loosely typed with a default value of 'undefined' if no value is assigned when a variable is declared. Variable reads are non-destructive and garbage collection is used for memory management. Variables are declared using the 'var' or 'let' keywords (e.g. var x = 2;).</p><p>Basic arithemtic operators and the modulus (%) operator are available, along with a number of bitwise operators. Expressions can be grouped in parenthesis to either change the order of operations or improve code legibility.</p><p>Arrays are declared as variables using new Array(x), where x is the size of the array to initialize. If x is omitted, the new array will be empty. Arrays can also be declared with values in the following two ways: <span class='singleIndent'><p>var myArray = new Array('value1', 'value2', 'value3');</p></span><span class='singleIndent'><p>var myArray = [1, 2, 3, 4];</p></span><p>Arrays are zero-indexed and array elements can be accessed using square brackets. For instance, myArray[2] would access the third element of the array. Assigning a value to an array index larger than the current size of the array will cause the array to be extended and the value added at the specified index. This can be the source of subtle errors as it is not usually a developer's intent to assign beyond the end of an array. Elements between the former last element of the array and the new last element will be set to undefined.</p><p>Standard relational operators are provided such as ==, !=, &lt;, &gt;, &gt;=, &lt;=. Some of the control flow statements available include the following:</p><div class='codeTable'><table><tr><th>Statement</th><th>Example</th></tr><tr><td>if</td><td><pre>if (x == y) {\n&nbsp;&nbsp;doSomething();\n}</pre></td></tr><tr><td>switch</td><td><pre>switch(expression) {\n&nbsp;&nbsp;case x:\n&nbsp;&nbsp;&nbsp;&nbsp;doSomething();\n&nbsp;&nbsp;&nbsp;&nbsp;break;\n&nbsp;&nbsp;case y:\n&nbsp;&nbsp;&nbsp;&nbsp;doSomethingElse();\n&nbsp;&nbsp;&nbsp;&nbsp;break;\n&nbsp;&nbsp;default:\n&nbsp;&nbsp;&nbsp;&nbsp;doSomethingDifferent();\n}</pre></td></tr><tr><td>while</td><td><pre>while (expression) { \n&nbsp;&nbsp;doAllTheThings();\n}</pre></td></tr><tr><td>do</td><td><pre>do {\n&nbsp;&nbsp;awesomeStuff();} while (expression);</pre></td></tr><tr><td>for</td><td><pre>for (var i = 0; i < 5; i) {\n&nbsp;&nbsp;countDown(); \n}</pre></td></tr></table></div>]]></text>
+				</section>
+				<section>
+					<order>3</order>
+					<title>Functions</title>
+					<text><![CDATA[<p>Functions in JavaScript are treated as first-class objects; they can be assigned to and passed around as variables. They can even be passed in as parameters to other functions. Fuctions are declared using the 'function' keyword as follows:</p><span class='singleIndent'><p>function coolFunction() { // statements }</p></span><p>A couple of things should be noted with functions. Functions are called by including parenthesis after the function name. However, the parenthesis are left off when passing a function as a parameter. If you call a function that returns a function and want to immediately call the returned function, two sets of parenthesis are used (e.g. functionReturnsFunction()() ).</p><p>Functions in JavaScript are hoisted, which means they do not need to be declared prior to be being called within a script.</p>]]></text>
+				</section>
+				<section>
+					<order>4</order>
+					<title>Classes</title>
+					<text><![CDATA[<p>JavaScript supports object-oriented programming, as do many other languages. Unlike functions, classes are not hoisted, so must be declared before being first used in a script. An example of a class declaration is the following:</p><span class='singleIndent'><pre>Class Car {\n&nbsp;&nbsp;constructor(make, model) {\n&nbsp;&nbsp;&nbsp;&nbsp;this.make = make;\n&nbsp;&nbsp;&nbsp;&nbsp;this.model = model;\n&nbsp;&nbsp;}\n}</pre></p></span><p>Classes can static members, getters, setters and more and readers are referred to other sources to learn more about declaring and using classes.</p>]]></text>
+				</section>
+				<section>
+					<order>5</order>
+					<title>The Document Object Model (DOM)</title>
+					<text><![CDATA[<p>JavaScript works with HTML documents through the DOM. The DOM concept breaks an HTML document into a tree of nested elements. The &lt;html&gt; node of a HTML document becomes the root node of the DOM. All other elements are nested below it. The properties of each element, such as width, alignment, and content can all be accessed once a node has been located in JavaScript. Nodes are located by traversing the DOM and selecting desired nodes.</p><p>In JavaScript the DOM is represented by the global Document object. The Document object has a number of helper methods to make working with the DOM easier. These include getElementByID(id) for selecting elements with specific id values. Elements can be created with the createElement method, inserted with the insertBefore method and removed from a parent node with the removeChild method. There are many more methods available and the reader should consult authoritative sources.</p> ]]></text>
+				</section>
+				<section>
+					<order>6</order>
+					<title>Events</title>
+					<text><![CDATA[<p>JavaScript supports event handling and a number of events are provided by browsers supporting JavaScript. Events allow scripts to respond to occurrences such as document lifecycle events, user input or server responses. When a document is loaded the window object raises a load event that be subscribed to with a call to window.addEventListener('load', StuffToDo). This will cause the StuffToDo method to be called when the document is loaded. Some HTML5 elements such as buttons raise their own events that can be subscribed to in a similar way, though it may take some calls to get the elemennt. For instance, document.getElementByID('myButton').addEventListener('click', ClickHandler) would result in the ClickHandler function being called whenever the user clicks on a button with id myButton. Event listeners can be removed with .removeEventListener() calls.</p>]]></text>
+				</section>
+			</sections>
+		</module_type>
+	</content>
+</course_type>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<course_type	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xmlns:h="https://www.atomiklabs.com"
+				xsi:SchemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml/LMSTypes.xsd">
+	<name>XML</name>
+	<code>STU120</code>
+	<instructor>
+		<firstname>Brad</firstname>
+		<lastname>Edwards</lastname>
+		<instructor_id>4</instructor_id>
+	</instructor>
+	<summary>This course covers the basics of XML.</summary>
+	<content>
+		<module_type>
+			<order>1</order>
+			<name>XML</name>
+			<summary>A short introduction to XML.</summary>
+			<objectives>
+				<objective>Understand the use of XML.</objective>
+				<objective>Understand the basics of XML syntax.</objective>
+			</objectives>
+			<introduction>XML is a language for annotating, or marking up, documents in a human-readable, machine-parsable way.</introduction>
+			<sections>
+				<section>
+					<order>1</order>
+					<title>Introduction</title>
+					<text><![CDATA[<p>XML documents consist of text surrounded in tags, which will be very familiar to those used to HTML and usually have a .xml extension. XML parsers turn XML documents into trees that can be traversed and manipulated. If an XML parser can parse an XML document successfully, the document is considered well-formed. Developers are free to use whatever tags they like, nested to arbitrary depths. To constrain this freedom and ensure documents conform to a specification developers can create Document Type Definition (DTD) or XML schema documents. These documents specify how a given XML document should be formatted. If an XML document meets the requirements of a DTD or schema, the document is considered valid. Of note, XML is case sensitive so developers need to pay attention to being consistent.</p><pre><span class='singleIndent'>&lt;?xml version = \1.0\?&gt;</span>\n<span class='singleIndent'>&lt;!-- a comment! --&gt;</span>\n<span class='singleIndent'>&lt;cow&gt;</span>\n<span class='doubleIndent'>&lt;colour&gt;Brown&lt;/colour&gt;</span>\n<span class='doubleIndent'>&lt;hasSpots&gt;Yes&lt;/hasSpots&gt;</span>\n<span class='singleIndent'>&lt;/cow&gt;</span></pre><p>The above is an example of a very simple XML document. The first tag identifies the document as an XML document. This is a standardized element to assist parsers. The second line is an XML comment that developers can use as code documentation. Comments will not be parsed by the XML parser. The rest of the document is arbitrary in the same sense that an object-oriented class is arbitrary. Any elements with any values can be included.</p> ]]></text>
+				</section>
+				<section>
+					<order>2</order>
+					<title>Namespaces</title>
+					<text><![CDATA[<p>Since XML documents can be defined by any developer, there is the possibility of naming collisions when XML documents are shared. To manage this, XML allows for declaring namespaces. Namespaces consist of an arbitrary prefix, which must not include 'xml', and a URI to uniquely identify the namespace. For instance, the following is a namespace declaration:</p><pre><span class='singleIndent'>&lt;farm:table xmlns:farm='http://www.farmerjoe.com'&gt;</span>\n<span class='doubleIndent'>&lt;farm:tr&gt;</span>\n<span class='tripleIndent'>&lt;farm:td&gt;Cows&lt;/farm:td&gt;</span>\n<span class='tripleIndent'>&lt;farm:td&gt;Sheep&lt;/farm:td&gt;</span>\n<span class='tripleIndent'>&lt;farm:td&gt;Chickens&lt;/farm:td&gt;</span>\n<span class='doubleIndent'>&lt;/farm:td&gt;</span>\n<span class='singleIndent'>&lt;farm:/table&gt;</span></pre>]]]></text>
+				</section>
+				<section>
+					<order>3</order>
+					<title>DTD's and Schema</title>
+					<text><![CDATA[<p>DTDs are declared in .dtd files and use Extended Backus-Naur Form (EBNF) grammar. Schemas are declared using XML syntax. Schema elements are declared within &lt;schema&gt; tags. Elements are either simple or complex types, with complex types allowed to contain other elements. XML includes string, boolean, decimal, float, double, long, int, short, date and time as built-in elements that can be used as simple types. In addition, there are publically available XML vocabularies that can be by developers. Examples include MathML, Scalable Vector Graphics and Wireless Markup Language.</p> ]]></text>
+				</section>
+				<section>
+					<order>4</order>
+					<title>XML DOM</title>
+					<text><![CDATA[<p>Some XML parsers will load XML documents into a DOM, much as HTML parsers do. The DOM can then be traversed in JavaScript code. The JavaScript XMLHttpRequest object can be used to fetch, open and parse XML documents. A new xmlHttpRequest object is created, followed by a call to the object's open method to get the XML document.</p><pre><span class='singleIndent'>var request = new XMLHttpRequest();</span>\n<span class='singleIndent'>request.open('get', urlToXmlDoc, false);</span></pre><p>XML parsers may have idiosyncracies that result in different behaviours or requirements for XML documents. Developers will need to research the peculiarities of target parsers.</p> ]]></text>
+				</section>
+				<section>
+					<order>5</order>
+					<title>XSLT</title>
+					<text><![CDATA[<p>Extensible Stylesheet Language Transformations (XSLT) is a style sheet language used to control the process of changing XML documents into HTML. XSLT includes the XPath syntax for navigating XML DOM, and XPath can be used in most major web languages.</p>]]></text>
+				</section>
+				<section>
+					<order>6</order>
+					<title>AJAX</title>
+					<text><![CDATA[<p>Asynchronous JavaScript and XML is a programming methodology that uses JavaScript, XML, HTML, CSS, JSON, the DOM, XSLT and the XMLHttpRequest to allow small updates to a user interface without reloading an entire page. JSON is often used rather XML, however the goal is the same; create dynamic web pages and applications. Developers do need to be aware that if a browser does not support or allow XMLHttpRequest, the user is using a screen reader or two-way communications with a server are needed, the AJAX approach may be not the most appropriate. The dynamic nature of AJAX pages or applications can also prevent bookmarks or the back function of browsers work as normally expected.</p>]]></text>
+				</section>
+			</sections>
+		</module_type>
+	</content>
+</course_type>
