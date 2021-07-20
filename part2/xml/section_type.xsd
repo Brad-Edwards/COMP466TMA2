@@ -5,6 +5,7 @@
 			xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			xmlns:xmlmime="http://www.w3.org/2004/11/xmlmime"
 			schemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml section_type.xsd">
+	<xs:include schemaLocation="paragraph_type.xsd" />
 	<xs:element name="section_type" maxOccurs="unbounded">
 		<xs:complexType>
 			<xs:sequence>
@@ -13,7 +14,7 @@
 				<xs:element name="content">
 					<xs:complexType>
 						<xs:choice maxOccurs="unbounded">
-							<xs:element name="paragraph" type="xs:string"/>
+							<xs:element name="paragraph" type="paragraph_type"/>
 							<xs:complexType name="image" type="xs:base64Binary" xmlmime:expectedMediaType="image/jpeg" />
 							<xs:element name="subsection" type="subsection_type" />
 						</xs:choice>

@@ -6,12 +6,13 @@
 			xmlns:xmlmime="http://www.w3.org/2004/11/xmlmime"
 			schemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml submission_type.xsd">
 	<xs:include schemaLocation="file_type.xsd" />
+	<xs:include schemaLocation="paragraph_type.xsd" />
 	<xs:element name="submission_type">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="student_comments" minOccurs="0" />
 				<xs:choice maxOccurs="unbounded">
-					<xs:element name="text_response" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+					<xs:element name="text_response" minOccurs="0" maxOccurs="unbounded" type="paragraph_type" />
 					<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:sequence>

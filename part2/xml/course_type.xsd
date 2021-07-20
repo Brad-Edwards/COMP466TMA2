@@ -10,6 +10,7 @@
 	<xs:include schemaLocation="instructor_type.xsd" />
 	<xs:include schemaLocation="quiz_type.xsd" />
 	<xs:include schemaLocation="section_type.xsd" />
+	<xs:include schemaLocation="paragraph_type.xsd" />
 
 	<xs:element name="course_type">
 		<xs:complexType>
@@ -23,7 +24,13 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="summary" type="xs:string" />
+				<xs:element name="summary" type="xs:string">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="paragraph" maxOccurs="unbounded" type="paragraph_type" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="objectives">
 					<xs:complexType>
 						<xs:sequence>
@@ -31,7 +38,13 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="introduction" type="xs:string" />
+				<xs:element name="introduction" type="xs:string">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="paragraph" maxOccurs="unbounded" type="paragraph_type" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="sections">
 					<xs:complexType>
 						<xs:sequence>
