@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema 	targetNamespace="http://34.213.198.190/COMP466TMA2/part2/xml"
+			elementFormDefault="qualified"
+			xmlns="http://34.213.198.190/COMP466TMA2/part2/xml"
+			xmlns:xi="http://www.w3.org/2001/XInclude"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:xmlmime="http://www.w3.org/2004/11/xmlmime"
+			schemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml course_type.xsd">
+	<xs:include schemaLocation="assignment_type.xsd" />
+	<xs:include schemaLocation="instructor_type.xsd" />
+	<xs:include schemaLocation="quiz_type.xsd" />
+	<xs:include schemaLocation="section_type.xsd" />
+
+	<xs:element name="course_type">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="code" type="xs:string" />
+				<xs:element name="instructors">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="instructor" maxOccurs="unbounded" type="instructor_type" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="summary" type="xs:string" />
+				<xs:element name="objectives">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="objective" maxOccurs="unbounded" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="introduction" type="xs:string" />
+				<xs:element name="sections">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="section" maxOccurs="unbounded" type="section_type" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="assignments">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="assignment" minOccurs="0" maxOccurs="unbounded" type="assignment_type">
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="quizzes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="quiz" minOccurs="0" maxOccurs="unbounded" type="quiz_type">
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

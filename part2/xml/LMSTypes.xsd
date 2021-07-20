@@ -1,176 +1,86 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-			xmlns:lms="http://www.atomiklabs.com/LMSTypes"
-			targetNamespace="http://www.atomiklabs.com/LMSTypes"
-			elementFormDefault="qualified">
+<xs:schema	targetNamespace="http://www.atomiklabs.com/LMSTypes"
+			elementFormDefaut="qualified"
+			xmlns="http://34.213.198.190/COMP466TMA2/part2/xml LMSTypes.xsd"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:xmlmime="http://www.w3.org/2004/11/xmlmime">
 
-	<xs:complexType name="course_type">
-		<xs:sequence>
-			<xs:element name="name" type="xs:string" />
-			<xs:element name="code" type="xs:string" />
-			<xs:element name="instructors">
-				<xs:complexType>
-					<xs:sequence minOccurs="1" maxOccurs="unbounded">
-						<xs:element name="instructor">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="firstname" type="xs:string" />
-									<xs:element name="lastname" type="xs:string" />
-									<xs:element name="instructor_id" type="xs:integer" />
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="summary" type="xs:string" />
-			<xs:element name="content">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="modules">
-							<xs:complexType>
-								<xs:sequence minOccurs="1" maxOccurs="unbounded">
-									<xs:element name="module" type="lms:module_type" />
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-						<xs:element name="assignments">
-							<xs:complexType>
-								<xs:sequence minOccurs="0" maxOccurs="unbounded">
-									<xs:element name="assignment" type="lms:assignment_type" />
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-						<xs:element name="quizzes">
-							<xs:complexType>
-								<xs:sequence minOccurs="0" maxOccurs="unbounded">
-									<xs:element name="quiz" type="lms:quiz_type" />
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:element name="module_type">
+	<xs:element name="course">
+	</xs:element>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="order" type="xs:integer" />
 				<xs:element name="name" type="xs:string" />
+				<xs:element name="code" type="xs:string" />
+				<xs:element name="instructors">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="instructor" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="instructor_id" type="xs:integer" />
+										<xs:element name="firstname" type="xs:string" />
+										<xs:element name="lastname" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="summary" type="xs:string" />
 				<xs:element name="objectives">
 					<xs:complexType>
-						<xs:sequence minOccurs="1" maxOccurs="unbounded">
-							<xs:element name="objective" type="xs:string" />
+						<xs:sequence>
+							<xs:element name="objective" maxOccurs="unbounded" type="xs:string" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="introduction" type="xs:string" />
 				<xs:element name="sections">
 					<xs:complexType>
-						<xs:sequence minOccurs="1" maxOccurs="unbounded">
+						<xs:sequence>
 							<xs:element name="order" type="xs:integer" />
-							<xs:element name="section">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="order" type="xs:integer"/>
-										<xs:element name="title" type="xs:string" />
-										<xs:element name="text" minOccurs="0" maxOccurs="1" type="xs:string" />
-										<xs:element name="subsection" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="order" type="xs:integer"/>
-													<xs:element name="subtitle" minOccurs="0" maxOccurs="1" type="xs:string" />
-													<xs:element name="text" type="xs:string" />
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
+							<xs:element name="title" type="xs:string" />
+							<xs:choice maxOccurs="unbounded">
+								<xs:element name="paragraph" type="xs:string"/>
+								<xs:complexType name="image" type="xs:base64Binary" xmlmime:expectedMediaType="image/jpeg" />
+								<xs:element name="subsection">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="subtitle" name="xs:string" />
+											<xs:choice maxOccurs="unbounded">
+												<xs:element name="paragraph" type="xs:string"/>
+												<xs:complexType name="image" type="xs:base64Binary" xmlmime:expectedMediaType="image/jpeg" />
+											</xs:choice>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="assignment_type">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="order" type="xs:integer" />
-				<xs:element name="title" type="xs:string" />
-				<xs:element name="weight" type="xs:decimal" />
-				<xs:element name="instructions" type="xs:string" />
-				<xs:element name="submission">
+				<xs:element name="assignments">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="filename" type="xs:string" />
-										<xs:element name="data" type="xs:hexBinary" />
-									</xs:sequence>
-								</xs:complexType>
+							<xs:element name="assignment" minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="order" type="xs:integer" />
+								<xs:element name="title" type="xs:string" />
+								<xs:element name="weight" type="xs:decimal" />
+								<xs:element name="instructions" type="xs:string" />
+								<xs:element name="submission">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+												<xs:complexType>
+													
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="grade" type="lms:grade_type" />
-				<xs:element name="marker" type="xs:string" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="quiz_type">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="order" type="xs:integer" />
-				<xs:element name="title" type="xs:string" />
-				<xs:element name="weight" type="xs:decimal" />
-				<xs:sequence>
-					<xs:element name="questions">
-						<xs:complexType>
-							<xs:sequence minOccurs="1" maxOccurs="unbounded">
-								<xs:element name="question">
-									
-								</xs:element>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-				</xs:sequence>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="grade_type">
-		<xs:simpleType>
-			<xs:union>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:length value="0" />
-					</xs:restriction>
-				</xs:simpleType>
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal" />
-				</xs:simpleType>
-			</xs:union>
-		</xs:simpleType>
-	</xs:element>
-
-	<xs:element name="multiple_choice_question_type">
-
-	</xs:element>
-
-	<xs:element name="text_question_type">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="weight" type="xs:deicmal" />
-				<xs:element name="text" type="xs:string" />
-				<xs:element name="student_answer" type="xs:string" />
-				<xs:element name="correct_answer" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

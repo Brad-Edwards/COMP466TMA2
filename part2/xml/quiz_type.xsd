@@ -1,0 +1,29 @@
+<xs:schema 	targetNamespace="http://34.213.198.190/COMP466TMA2/part2/xml"
+			elementFormDefault="qualified"
+			xmlns="http://34.213.198.190/COMP466TMA2/part2/xml"
+			xmlns:xi="http://www.w3.org/2001/XInclude"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:xmlmime="http://www.w3.org/2004/11/xmlmime"
+			schemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml quiz_type.xsd">
+	<xs:include schemaLocation="grade_type.xsd" />
+	<xs:include schemaLocation="quiz_question_type.xsd" />
+	<xs:element name="quiz_type">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="order" type="xs:integer" />
+				<xs:element name="title" type="xs:string" />
+				<xs:element name="weight" type="xs:decimal" />
+				<xs:element name="grade" minOccurs="0" type="grade_type" />
+				<xs:sequence>
+					<xs:element name="questions">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="question" maxOccurs="unbounded" type="quiz_question_type" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

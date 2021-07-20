@@ -16,7 +16,7 @@
 			<name>XML</name>
 			<summary>A short introduction to XML.</summary>
 			<objectives>
-				<objective>Understand the use of XML.</objective>
+				<objective>Understand the uses of XML.</objective>
 				<objective>Understand the basics of XML syntax.</objective>
 			</objectives>
 			<introduction>XML is a language for annotating, or marking up, documents in a human-readable, machine-parsable way.</introduction>
