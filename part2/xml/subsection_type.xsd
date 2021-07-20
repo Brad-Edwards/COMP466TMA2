@@ -10,11 +10,15 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="order" type="xs:integer" />
+				<xs:element name="level" type="xs:integer" />
 				<xs:element name="title" type="xs:string" />
-				<xs:choice maxOccurs="unbounded">
-					<xs:element name="paragraph" type="paragraph_type"/>
-					<xs:complexType name="image" type="xs:base64Binary" xmlmime:expectedMediaType="image/jpeg" />
-				</xs:choice>
+				<content>
+					<xs:choice maxOccurs="unbounded">
+						<xs:element name="paragraph" type="paragraph_type"/>
+						<xs:complexType name="image" type="xs:base64Binary" xmlmime:expectedMediaType="image/jpeg" />
+						<xs:element ref="subsection_type" />
+					</xs:choice>
+				</content>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

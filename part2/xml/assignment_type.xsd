@@ -12,16 +12,6 @@
 				<xs:element name="title" type="xs:string" />
 				<xs:element name="weight" type="xs:decimal" />
 				<xs:element name="instructions" type="xs:string" />
-				<xs:element name="submissions">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="submission" minOccurs="0" maxOccurs="unbounded" type="submission_type" />
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="assignment_submitted" type="xs:boolean" />
-				<xs:element name="assignment_marked" type="xs:boolean" />
-				<xs:element name="grade" type="grade_type" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

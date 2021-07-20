@@ -11,7 +11,13 @@
 			<xs:sequence>
 				<xs:element name="order" type="xs:integer" />
 				<xs:element name="text" type="xs:string" />
-				<xs:element name="option" minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="options" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="option" maxOccurs="unbounded" type="quiz_question_option_type" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="answer" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>

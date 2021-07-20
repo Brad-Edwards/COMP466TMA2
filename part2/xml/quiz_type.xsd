@@ -13,7 +13,6 @@
 				<xs:element name="order" type="xs:integer" />
 				<xs:element name="title" type="xs:string" />
 				<xs:element name="weight" type="xs:decimal" />
-				<xs:element name="grade" minOccurs="0" type="grade_type" />
 				<xs:sequence>
 					<xs:element name="questions">
 						<xs:complexType>

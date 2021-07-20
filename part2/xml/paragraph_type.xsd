@@ -15,7 +15,13 @@
 					<xs:complextType>
 						<xs:sequence>
 							<xs:element name="ordered" type="xs:boolean" />
-							<xs:element name="list_item" type="xs:string" />
+							<xs:element name="list_items">
+								<xs:complextType>
+									<xs:sequence>
+										<xs:element name="list_item" type="xs:string" />
+									</xs:sequence>
+								</xs:complextType>
+							</xs:element>							
 						</xs:sequence>
 					</xs:complextType>
 				</xs:element>
