@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <course_type	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				xsi:no="http://34.213.198.190/COMP466TMA2/part2/xml"
-				xsi:schemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml/course_type.xsd">
+				xmlns="http://34.213.198.190/COMP466TMA2/part2/xml"
+				xsi:schemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml 
+									course_type.xsd">
 	<name>HTML and CSS</name>
 	<code>STU100</code>
 	<instructors>
@@ -105,23 +106,27 @@
 						<paragraph>
 							<text>The &lt;html&gt; is the root of the document and encompasses all HTML elements in the document.These tags are needed as the HTML could be embedded within elements of another document type such as XML.</text>
 						</paragraph>
-						<subsection>
+						<subsection_element>
 							<order>1</order>
 							<level>3</level>
 							<title>&lt;head&gt;</title>
-							<paragraph>
-								<text>The &lt;head&gt; tag may contain information about the HTML document, such as the character set, specified by the &lt;meta&gt; tag and links to resources such as CSS sheets and JavaScript scripts. Resources to be included in the document are put in &lt;link&gt; tags. &lt;link&gt; tags, as with many other HTML elements, may have attributes. In the case of the &lt;link&gt; tag, 'rel' declares the relationship between the linked resource and the HTML document. In the case above the rel attribute indicates the linked resource is a stylesheet. The 'type' attribute declares the type of the linked resource and the 'href' attribute gives the location of the resouce to link. The &lt;title&gt; tag is often displayed by browsers as the title of the tab in which the document is displayed.</text>
-							</paragraph>			
-						</subsection>
-						<subsection>
+							<content>
+								<paragraph>
+									<text>The &lt;head&gt; tag may contain information about the HTML document, such as the character set, specified by the &lt;meta&gt; tag and links to resources such as CSS sheets and JavaScript scripts. Resources to be included in the document are put in &lt;link&gt; tags. &lt;link&gt; tags, as with many other HTML elements, may have attributes. In the case of the &lt;link&gt; tag, 'rel' declares the relationship between the linked resource and the HTML document. In the case above the rel attribute indicates the linked resource is a stylesheet. The 'type' attribute declares the type of the linked resource and the 'href' attribute gives the location of the resouce to link. The &lt;title&gt; tag is often displayed by browsers as the title of the tab in which the document is displayed.</text>
+								</paragraph>
+							</content>			
+						</subsection_element>
+						<subsection_element>
 							<order>2</order>
 							<level>3</level>
 							<title>&lt;body&gt;</title>
-							<paragraph>
-								<text>The &lt;body&gt; contains the content of the document. There are many tags that can be contained within the &lt;body&gt; tags. The paragraph element, &lt;p&gt;, groups text into a paragraph. Several other elements can be used to declare various levels of headers. Header elements are &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc. Images can be included using &lt;img&gt; tags with a 'src' to provide its location. List elements are also available, both ordered (&lt;ol&gt;) and unordered (&lt;ul&gt;). List elements included within the parent tags using the &lt;li&gt; tags.</text>
-							</paragraph>
-						</subsection>
-						<subsection>
+							<content>
+								<paragraph>
+									<text>The &lt;body&gt; contains the content of the document. There are many tags that can be contained within the &lt;body&gt; tags. The paragraph element, &lt;p&gt;, groups text into a paragraph. Several other elements can be used to declare various levels of headers. Header elements are &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc. Images can be included using &lt;img&gt; tags with a 'src' to provide its location. List elements are also available, both ordered (&lt;ol&gt;) and unordered (&lt;ul&gt;). List elements included within the parent tags using the &lt;li&gt; tags.</text>
+								</paragraph>
+							</content>
+						</subsection_element>
+						<subsection_element>
 							<order>3</order>
 							<level>3</level>
 							<title>Tables</title>
@@ -152,17 +157,18 @@
 									<text>Tables can be created using HTML using the elements in the examle above. The header, body and footer elements are self-explanatory. The table row tags, &lt;tr&gt;, enclose data for a single row. The &lt;th&gt; enclose header or footer cell data for each row, and the &lt;td&gt; enclose data for rows within the table body.</text>
 								</paragraph>
 							</content>
-						</subsection>
-						<subsection>
+						</subsection_element>
+						<subsection_element>
 							<order>4</order>
 							<level>3</level>
 							<title>Links</title>
 							<content>
 								<paragraph>
 									<text>Links are another important element. A link element such as &lt;a href='www.someaddress.com'&gt;Click here &lt;/a&gt; would create a hyperlink to the address listed in the href attribute.</text>
+								</paragraph>
 							</content>
-						</subsection>
-						<subsection>
+						</subsection_element>
+						<subsection_element>
 							<order>5</order>
 							<level>3</level>
 							<title>Forms</title>
@@ -198,7 +204,7 @@
 									<text>The method attribute in this example declares the input will use the HTTP POST method in its message to the server. The action attribute indicates the server to target with the POST message.</text>
 								</paragraph>
 							</content>
-						</subsection>
+						</subsection_element>
 					</content>
 				</subsection>
 			</content>
@@ -211,7 +217,7 @@
 					<text>Cascading style sheets (CSS) are documents used to style HTML/5 documents. Using CSS allows developers to declare the structure and content of web pages in HTML and the presentation of web pages in separate CSS documents. CSS can be applied to multiple web pages in a site, each page simply needs to import the stylesheet using a link element.</text>
 				</paragraph>
 				<paragraph>
-					<text>Styles can be declared within HTML documents using the style attribute on the different tags. Unfortunately, this requires declaring the necessary styles separately in every tag in every document in a web site. External stylesheets referenced in the way already shown allow styles to be declared once and applied across the website.</text>text>
+					<text>Styles can be declared within HTML documents using the style attribute on the different tags. Unfortunately, this requires declaring the necessary styles separately in every tag in every document in a web site. External stylesheets referenced in the way already shown allow styles to be declared once and applied across the website.</text>
 				</paragraph>
 				<paragraph>
 					<text>CSS stylesheets consist of a series of statements. Each statement starts with one selector or several in a comma-separated list, which declare which HTML elements the style will target. After the selectors, properties and their values are put between curly braces in a semi-colon separated list. The properties available for each element can vary.</text>

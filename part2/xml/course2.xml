@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <course_type	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				xmlns:h="https://www.atomiklabs.com"
-				xsi:SchemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml/course_type.xsd">
+				xmlns="http://34.213.198.190/COMP466TMA2/part2/xml"
+				xsi:schemaLocation="http://34.213.198.190/COMP466TMA2/part2/xml 
+									course_type.xsd">
 	<name>JavaScript</name>
 	<code>STU200</code>
 	<instructors>
 		<instructor>
-			<intstructor_id>3</intstructor_id>
+			<instructor_id>3</instructor_id>
 			<firstname>Brad</firstname>
 			<lastname>Edwards</lastname>
 		</instructor>
@@ -80,7 +81,7 @@
 							<list_item>if (x ==y) { foo(); }</list_item>
 							<list_item>switch (x) { case 1: foo(); break; case 2: bar(); break; default: doSomethingElse(); }</list_item>
 							<list_item>while (x == true) { amazeUsAll(); }</list_item>
-							<list_item>for (var i = 0; i < 5; i++) { dance(); }</list_item>
+							<list_item>for (var i = 0; i &lt; 5; i++) { dance(); }</list_item>
 						</list_items>
 					</list>
 				</paragraph>
@@ -142,6 +143,8 @@
 			</content>
 		</section>
 	</sections>
+	<assignments>
+	</assignments>
 	<quizzes>
 		<quiz>
 			<order>1</order>
