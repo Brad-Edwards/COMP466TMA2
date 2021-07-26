@@ -5,7 +5,7 @@
 	Date: July 10, 2021
 	Copyright: Brad Edwards, 2021
 
-	Hours: 18
+	Hours: 24
 	*/
 
 	// Start session for application
@@ -46,6 +46,7 @@
 		</script>
 	</head>
 	<body>
+		<text>HI EVERYONE!</text>
 		<div id="mainContentDiv" class="flexContainer">
 			<?php
 				if (!$isLoggedIn) {

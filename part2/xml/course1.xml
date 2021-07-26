@@ -91,17 +91,17 @@
 							</text>
 						</paragraph>
 						<paragraph>
-							<text>&lt;!DOCTYPE html&gt;</text><break />
-							<indent /><text>&lt;html&gt;</text><break />
-							<indent /><indent /><text>&lt;head&gt;</text><break />
-							<indent /><indent /><indent /><text>&lt;meta charset = 'utf-8'&gt;</text><break />
-							<text>&lt;title&gt;Welcome&lt;/title&gt;</text><break /> 
-							<indent /><indent /><indent /><text>&lt;link rel='stylesheet' src='styles.css'&gt;</text><break />
-							<indent /><indent /><text>&lt;/head&gt;</text><break />
-							<indent /><indent /><text>&lt;body&gt;</text><break />
-							<indent /><indent /><indent /><text>&lt;p&gt;This is some HTML5&lt;/p&gt;</text><break />
-							<indent /><indent /><text>&lt;/body&gt;</text><break />
-							<text>&lt;/html&gt;</text>
+							<text>&lt;!DOCTYPE html&gt;</text>
+							<text indent="1">&lt;html&gt;</text>
+							<text indent="2">&lt;head&gt;</text>
+							<text indent="3">&lt;meta charset = 'utf-8'&gt;</text>
+							<text>&lt;title&gt;Welcome&lt;/title&gt;</text> 
+							<text indent="3">&lt;link rel='stylesheet' src='styles.css'&gt;</text>
+							<text indent="2">&lt;/head&gt;</text>
+							<text indent="2">&lt;body&gt;</text>
+							<text indent="3">&lt;p&gt;This is some HTML5&lt;/p&gt;</text>
+							<text indent="2">&lt;/body&gt;</text>
+							<text indent="1">&lt;/html&gt;</text>
 						</paragraph>
 						<paragraph>
 							<text>The &lt;html&gt; is the root of the document and encompasses all HTML elements in the document.These tags are needed as the HTML could be embedded within elements of another document type such as XML.</text>
@@ -132,25 +132,25 @@
 							<title>Tables</title>
 							<content>
 								<paragraph>
-									<text>&lt;table&gt;</text><break />
-									<indent /><text>&lt;thead&gt;</text><break />
-									<indent /><indent /><text>&lt;tr&gt;</text><break />
-									<indent /><indent /><indent /><text>&lt;th&gt;Header 1&lt;/th&gt;</text><break />
-									<indent /><indent /><indent /><text>&lt;th&gt;Header 2&lt;/th&gt;</text><break />
-									<indent /><indent /><text>&lt;/tr&gt;</text><break />
-									<indent /><text>&lt;/thead&gt;</text><break />
-									<indent /><text>&lt;/tbody&gt;</text><break />
-									<indent /><indent /><text>&lt;tr&gt;</text><break />
-									<indent /><indent /><indent /><text>&lt;td&gt;Cell Text&lt;/td&gt;</text><break />
-									<indent /><indent /><indent /><text>&lt;td&gt;Cell Text&lt;/td&gt;</text><break />
-									<indent /><indent /><text>&lt;/tr&gt;</text><break />
-									<indent /><text>&lt;/tbody&gt;</text><break />
-									<indent /><text>&lt;/tfoot&gt;</text><break />
-									<indent /><indent /><text>&lt;tr&gt;</text><break />
-									<indent /><indent /><indent /><text>&lt;th&gt;Footer 1&lt;/th&gt;</text><break />
-									<indent /><indent /><indent /><text>&lt;th&gt;Footer 2&lt;/th&gt;</text><break />
-									<indent /><indent /><text>&lt;/tr&gt;</text><break />
-									<indent /><text>&lt;/tfoot&gt;</text><break />
+									<text>&lt;table&gt;</text>
+									<text indent="1">&lt;thead&gt;</text>
+									<text indent="2">&lt;tr&gt;</text>
+									<text indent="3">&lt;th&gt;Header 1&lt;/th&gt;</text>
+									<text indent="3">&lt;th&gt;Header 2&lt;/th&gt;</text>
+									<text indent="2">&lt;/tr&gt;</text>
+									<text indent="1">&lt;/thead&gt;</text>
+									<text indent="1">&lt;/tbody&gt;</text>
+									<text indent="2">&lt;tr&gt;</text>
+									<text indent="3">&lt;td&gt;Cell Text&lt;/td&gt;</text>
+									<text indent="3">&lt;td&gt;Cell Text&lt;/td&gt;</text>
+									<text indent="2">&lt;/tr&gt;</text>
+									<text indent="1">&lt;/tbody&gt;</text>
+									<text indent="1">&lt;/tfoot&gt;</text>
+									<text indent="2">&lt;tr&gt;</text>
+									<text indent="3">&lt;th&gt;Footer 1&lt;/th&gt;</text>
+									<text indent="3">&lt;th&gt;Footer 2&lt;/th&gt;</text>
+									<text indent="2">&lt;/tr&gt;</text>
+									<text indent="1">&lt;/tfoot&gt;</text>
 									<text>&lt;/table&gt;</text>
 								</paragraph>
 								<paragraph>
@@ -174,7 +174,7 @@
 							<title>Forms</title>
 							<content>
 								<paragraph>
-									<text>HTML forms are a means to allow users to submit information to a web server in a moderately structured way. Forms can include a a number of different kinds of input elements:</text><break />
+									<text>HTML forms are a means to allow users to submit information to a web server in a moderately structured way. Forms can include a a number of different kinds of input elements:</text>
 									<indent /><list>
 										<ordered>false</ordered>
 										<list_items>
@@ -194,11 +194,11 @@
 									</list>
 								</paragraph>
 								<paragraph>
-									<text>Input tags within a form can be set to any of these types to submit data. Forms take the following general shape:</text><break />
-									<indent /><text>&lt;form method='post' action = 'http://www.aserver.com'&gt;</text><break />
-									<indent /><indent /><text>&lt;label&gt;Color&lt;/label&gt;</text><break />
-									<indent /><indent /><text>&lt;input type='color' autofocus/&gt;</text><break />
-									<indent /><text>&lt;/form&gt;</text><break />
+									<text>Input tags within a form can be set to any of these types to submit data. Forms take the following general shape:</text>
+									<text indent="1">&lt;form method='post' action = 'http://www.aserver.com'&gt;</text>
+									<text indent="2">&lt;label&gt;Color&lt;/label&gt;</text>
+									<text indent="2">&lt;input type='color' autofocus/&gt;</text>
+									<text indent="1">&lt;/form&gt;</text>
 								</paragraph>
 								<paragraph>
 									<text>The method attribute in this example declares the input will use the HTTP POST method in its message to the server. The action attribute indicates the server to target with the POST message.</text>
@@ -223,12 +223,12 @@
 					<text>CSS stylesheets consist of a series of statements. Each statement starts with one selector or several in a comma-separated list, which declare which HTML elements the style will target. After the selectors, properties and their values are put between curly braces in a semi-colon separated list. The properties available for each element can vary.</text>
 				</paragraph>
 				<paragraph>
-					<text>Each element in a web page can be conceptualized as existing within a box on the screen. All of the element's contents, including any child elements, are contained within the box. The margin property can be used to enforce a distance between the target element's border and other outside elements specified in pixels, percentages of the available space to the element or em's, which are linked to the size of individual characters in the current font. The padding property is very similar, however it sets the distance between the border of an element and its contents. The following is an example of a stylesheet entry:</text><break />
-					<indent /><text>p {</text><break />
-					<indent /><indent /><text>width: 10px;</text><break />
-					<indent /><indent /><text>height: 10px;</text><break />
-					<indent /><indent /><text>margin: 10px, 15px, 10px, 15px;</text><break />
-					<indent /><text>}</text>
+					<text>Each element in a web page can be conceptualized as existing within a box on the screen. All of the element's contents, including any child elements, are contained within the box. The margin property can be used to enforce a distance between the target element's border and other outside elements specified in pixels, percentages of the available space to the element or em's, which are linked to the size of individual characters in the current font. The padding property is very similar, however it sets the distance between the border of an element and its contents. The following is an example of a stylesheet entry:</text>
+<text indent="1">p {</text>
+<text indent="2">width: 10px;</text>
+<text indent="2">height: 10px;</text>
+<text indent="2">margin: 10px, 15px, 10px, 15px;</text>
+<text indent="1">}</text>
 				</paragraph>
 				<paragraph>
 					<text>The selector targets paragraph tags and the style properties set the height, width and margin properties of all paragraph elements in any document that references a stylesheet with that entry. There are too many properties to list here and CSS is a complicated technology with many corner cases. However, two important HTML element attributes help with targetting CSS styles. Each HTML element can have an id and class attribute set. The value of an id element must be unique within the context of a given HTML document. Multiple elements can have the same class value. In a CSS file, id and class values can be used in style selectors to target the relevant elements. An id value of 'uniqueElement' would be entered as '#uniqueElement' in a CSS selector. A class value of 'oneOfManyElements' would be entered as '.oneOfManyElements'. Id or class selectors can be combined with element selectors to target elements that are child elements of an element with a given id or class value. For instance, '#uniqueElement p' would target paragraph elements which are children of an element with an id of 'uniqueElement'.</text>

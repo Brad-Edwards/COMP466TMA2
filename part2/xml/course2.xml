@@ -42,7 +42,7 @@
 				</paragraph>
 				<paragraph>
 					<text>Scripts can be included in HTML documents within &lt;script&gt; tags. Any text within the tags will be interpreted as JavaScript commands. Scripts can also be written in their own files, usually with .js extensions. All of the text within the file will be interpreted as JavaScript.  These files can be included by HTML documents, again using script tags, as follows:</text><break />
-					<indent /><text>&lt;script type=\text/javascript\ src=\script.js\&gt;&lt;/script&gt;</text>
+					<text indent="1">&lt;script type=\text/javascript\ src=\script.js\&gt;&lt;/script&gt;</text>
 				</paragraph>
 				<paragraph>
 					<text>Writing scripts in separate files allows them to be reused in multiple pages or in other projects and may allow IDEs or text editors to better interpret the file content and assist the developer.</text>
@@ -67,8 +67,8 @@
 				</paragraph>
 				<paragraph>
 					<text>Arrays are declared as variables using new Array(x), where x is the size of the array to initialize. If x is omitted, the new array will be empty. Arrays can also be declared with values in the following two ways:</text><break />
-					<indent /><text>var myArray = new Array('value1', 'value2', 'value3');</text><break />
-					<indent /><text>var myArray = [1, 2, 3, 4];</text>
+					<text indent="1">var myArray = new Array('value1', 'value2', 'value3');</text><break />
+					<text indent="1">var myArray = [1, 2, 3, 4];</text>
 				</paragraph>
 				<paragraph>
 					<text>Arrays are zero-indexed and array elements can be accessed using square brackets. For instance, myArray[2] would access the third element of the array. Assigning a value to an array index larger than the current size of the array will cause the array to be extended and the value added at the specified index. This can be the source of subtle errors as it is not usually a developer's intent to assign beyond the end of an array. Elements between the former last element of the array and the new last element will be set to undefined.</text>
@@ -93,7 +93,7 @@
 			<content>
 				<paragraph>
 					<text>Functions in JavaScript are treated as first-class objects; they can be assigned to and passed around as variables. They can even be passed in as parameters to other functions. Fuctions are declared using the 'function' keyword as follows:</text><break />
-					<indent /><text>function coolFunction() { // statements }</text>
+					<text indent="1">function coolFunction() { // statements }</text>
 				</paragraph>
 				<paragraph>
 					<text>A couple of things should be noted with functions. Functions are called by including parenthesis after the function name. However, the parenthesis are left off when passing a function as a parameter. If you call a function that returns a function and want to immediately call the returned function, two sets of parenthesis are used (e.g. functionReturnsFunction()() ).</text>
@@ -109,12 +109,12 @@
 			<content>
 				<paragraph>
 					<text>JavaScript supports object-oriented programming, as do many other languages. Unlike functions, classes are not hoisted, so must be declared before being first used in a script. An example of a class declaration is the following:</text><break />
-					<indent /><text>Class Car {</text><break />
-					<indent /><indent /><text>constructor(make, model) {</text><break />
-					<indent /><indent /><indent /><text>this.make = make;</text><break />
-					<indent /><indent /><indent /><text>this.model = model;</text><break />
-					<indent /><indent /><text>}</text><break />
-					<indent /><text>}</text>
+					<text indent="1">Class Car {</text><break />
+					<text indent="2">constructor(make, model) {</text><break />
+					<text indent="3">this.make = make;</text><break />
+					<text indent="3">this.model = model;</text><break />
+					<text indent="2">}</text><break />
+					<text indent="1">}</text>
 				</paragraph>
 				<paragraph>
 					<text>Classes can static members, getters, setters and more and readers are referred to other sources to learn more about declaring and using classes.</text>

@@ -35,12 +35,12 @@
 					<text>XML documents consist of text surrounded in tags, which will be very familiar to those used to HTML and usually have a .xml extension. XML parsers turn XML documents into trees that can be traversed and manipulated. If an XML parser can parse an XML document successfully, the document is considered well-formed. Developers are free to use whatever tags they like, nested to arbitrary depths. To constrain this freedom and ensure documents conform to a specification developers can create Document Type Definition (DTD) or XML schema documents. These documents specify how a given XML document should be formatted. If an XML document meets the requirements of a DTD or schema, the document is considered valid. Of note, XML is case sensitive so developers need to pay attention to being consistent.</text>
 				</paragraph>
 				<paragraph>
-					<indent /><text>&lt;?xml version = \1.0\?&gt;</text><break />
-					<indent /><text>&lt;!-- a comment! --&gt;</text><break /><break />
-					<indent /><text>&lt;cow&gt;</text><break />
-					<indent /><indent /><text>&lt;colour&gt;Brown&lt;/colour&gt;</text><break />
-					<indent /><indent /><text>&lt;hasSpots&gt;Yes&lt;/hasSpots&gt;</text><break />
-					<indent /><text>&lt;/cow&gt;</text>
+					<text indent="1">&lt;?xml version = \1.0\?&gt;</text><break />
+					<text indent="1">&lt;!-- a comment! --&gt;</text><break /><break />
+					<text indent="1">&lt;cow&gt;</text><break />
+					<text indent="2">&lt;colour&gt;Brown&lt;/colour&gt;</text><break />
+					<text indent="2">&lt;hasSpots&gt;Yes&lt;/hasSpots&gt;</text><break />
+					<text indent="1">&lt;/cow&gt;</text>
 				</paragraph>
 				<paragraph>
 					<text>The above is an example of a very simple XML document. The first tag identifies the document as an XML document. This is a standardized element to assist parsers. The second line is an XML comment that developers can use as code documentation. Comments will not be parsed by the XML parser. The rest of the document is arbitrary in the same sense that an object-oriented class is arbitrary. Any elements with any values can be included.</text>
@@ -53,7 +53,7 @@
 			<content>
 				<paragraph>
 					<text>Since XML documents can be defined by any developer, there is the possibility of naming collisions when XML documents are shared. To manage this, XML allows for declaring namespaces. Namespaces consist of an arbitrary prefix, which must not include 'xml', and a URI to uniquely identify the namespace. For instance, the following is a namespace declaration:</text><break />
-					<indent /><text>&lt;farm:table xmlns:farm='http://www.farmerjoe.com'&gt;</text>
+					<text indent="1">&lt;farm:table xmlns:farm='http://www.farmerjoe.com'&gt;</text>
 				</paragraph>
 			</content>
 		</section>
@@ -72,8 +72,8 @@
 			<content>
 				<paragraph>
 					<text>Some XML parsers will load XML documents into a DOM, much as HTML parsers do. The DOM can then be traversed in JavaScript code. The JavaScript XMLHttpRequest object can be used to fetch, open and parse XML documents. A new xmlHttpRequest object is created, followed by a call to the object's open method to get the XML document.</text><break />
-					<indent /><text>var request = new XMLHttpRequest();</text><break />
-					<indent /><text>request.open('get', urlToXmlDoc, false);</text>
+					<text indent="1">var request = new XMLHttpRequest();</text><break />
+					<text indent="1">request.open('get', urlToXmlDoc, false);</text>
 				</paragraph>
 				<paragraph>
 					<text>XML parsers may have idiosyncracies that result in different behaviours or requirements for XML documents. Developers will need to research the peculiarities of target parsers.</text>
