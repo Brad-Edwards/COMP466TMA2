@@ -187,7 +187,7 @@
 	<?php if (isset($_GET['action']) && trim($_GET['action']) == 'addCourse') : ?>
 		<div id="addCourseFormDiv" class="boxShadow">
 			<h2>Add Course</h2>
-			<form enctype="multipart/form-data" id="addCourseForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" target="_blank">
+			<form enctype="multipart/form-data" id="addCourseForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 				<label>Select a text file containing a new course.</label>
 				<input type="file" id="courseFileButton" name="courseFile" class="formElement">
 				<div class="formDiv flexContainer">
@@ -209,10 +209,8 @@
 				&& is_uploaded_file($_FILES['courseFile']['tmp_name'])) {
 				
 				$xml = simplexml_load_file($_FILES['courseFile']['tmp_name']);
-				addCourse($xml);
-				$output = "";
-				
-
+				$courseAdded = addCourse($xml);
+				echo $courseAdded;
 			}
 			header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
 		?>

@@ -23,6 +23,8 @@ function addCourseClickHandler(e) {
 	request.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			div.innerHTML = request.responseText;
+			console.log(request.responseText);
+			console.log("hi");
 		}
 	}
 	request.send();
