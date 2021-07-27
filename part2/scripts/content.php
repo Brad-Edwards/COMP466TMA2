@@ -210,7 +210,7 @@
 				
 				$xml = simplexml_load_file($_FILES['courseFile']['tmp_name']);
 				$courseAdded = addCourse($xml);
-				echo $courseAdded;
+				
 			}
 			header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
 		?>
