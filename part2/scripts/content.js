@@ -39,5 +39,8 @@ function getCurrentAddress() {
 // Initializes the content management scripts
 // Returns: void
 function init() {
-	document.getElementById('addCourseLink').addEventListener('click', addCourseClickHandler);
+	// Only shows for instructors
+	if (document.getElementById('addCourseLink') != null) {
+		document.getElementById('addCourseLink').addEventListener('click', addCourseClickHandler);	
+	}	
 }
