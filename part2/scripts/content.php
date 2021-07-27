@@ -123,7 +123,7 @@
 			$query .= "INSERT INTO course_instructors (course_id, instructor_id) VALUES (@course_id, '$instructor[2]');";
 		}
 
-		// Add sections
+		// Add sections and subsections
 		foreach ($course->sections->section AS $section) {
 			$paragraphs = "";
 			foreach ($section->content[0] AS $content) {
@@ -136,6 +136,20 @@
 			$query .= "INSERT INTO sections (course_id, section_order, title, content) VALUES (@course_id, '$section->order', '$title', '$paragraphs');";
 			addSubsectionQuery($section, $query);
 		}
+
+		// Add assignments
+		// TODO: Didn't add assignments to any test data, not required by assignment
+
+		// Add quizzes
+		foreach ($course->quizzes[0] AS $quiz) {
+			$order = $quiz->order;
+			$title = str_replace("'", "''", $quiz->title);
+			$weight = $quiz->weight;
+			$questions = str_replace("'", "''", $quiz->questions->asXML());
+			$query .= "INSERT INTO quizzes (course_id, quiz_weight, quiz_order, quiz_name, quiz_content) VALUES (@course_id, '$weight', '$order', '$title', '$questions');";
+		}
+
+		// Add 
 		$query .= "COMMIT;";
 
 		// Execute query

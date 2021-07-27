@@ -1,6 +1,8 @@
 CREATE TABLE quizzes (
 	quiz_id int NOT NULL AUTO_INCREMENT,
     course_id int NOT NULL,
+    quiz_weight DECIMAL(5,2) NOT NULL,
+    quiz_order int NOT NULL,
     quiz_name VARCHAR(100) NOT NULL,
     quiz_content MEDIUMTEXT,
     PRIMARY KEY (quiz_id),

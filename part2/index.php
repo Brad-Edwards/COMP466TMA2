@@ -5,7 +5,7 @@
 	Date: July 10, 2021
 	Copyright: Brad Edwards, 2021
 
-	Hours: 24
+	Hours: 28
 	*/
 
 	// Start session for application
