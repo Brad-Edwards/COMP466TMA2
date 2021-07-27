@@ -18,7 +18,7 @@
 	$credentialPage = true;
 
 	$username = $password = $confirmPassword = "";
-	$usernameError = $passwordError = $confirmPasswordError = $registrationError = "";
+	$usernameError = $passwordError = $confirmPasswordError = $registrationError = $firstnameError = $lastnameError = "";
 
 	// Handle form post
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -86,7 +86,7 @@
 
 			if (empty($usernameError) && empty($passwordError) & empty($confirmPasswordError)) {
 				$userRole = trim($_POST['roles']);
-				$query = "INSERT INTO users (username, passwd, user_category_id) VALUES ('" . $username . "','" . password_hash($password, PASSWORD_DEFAULT) . "', (SELECT user_category_id FROM user_categories WHERE category_name='" . $userRole . "'));";
+				$query = "INSERT INTO users (username, passwd, user_category_id, first_name, last_name) VALUES ('" . $username . "','" . password_hash($password, PASSWORD_DEFAULT) . "', (SELECT user_category_id FROM user_categories WHERE category_name='" . $userRole . "'), '" . trim($_POST['firstname']) . "', '" . trim($_POST['lastname']) . "');";
 				if ($userRole == 'student') {
 					$query .= "INSERT INTO students (user_id) VALUES ((SELECT user_id FROM users WHERE username='" . $username . "'));";
 				} else {
@@ -138,6 +138,16 @@
 						<option value="student">Student</option>
 						<option value="instructor">Instructor</option>
 					</select>
+				</div>
+				<div class="formDiv flexContainer">
+					<label>First Name</label>
+					<input type="text" name="firstname" class="formElement <?php echo (!empty($usernameError)) ? 'is-invalid' : ''; ?>" autofocus>
+					<span class="invalidFeedback"><?php echo $firstnameError; ?></span>
+				</div>
+				<div class="formDiv flexContainer">
+					<label>Last Name</label>
+					<input type="text" name="lastname" class="formElement <?php echo (!empty($usernameError)) ? 'is-invalid' : ''; ?>" autofocus>
+					<span class="invalidFeedback"><?php echo $lastnameError; ?></span>
 				</div>
 				<div class="formDiv flexContainer">
 					<label>Username</label>
