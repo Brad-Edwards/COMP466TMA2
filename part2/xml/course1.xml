@@ -224,11 +224,11 @@
 				</paragraph>
 				<paragraph>
 					<text>Each element in a web page can be conceptualized as existing within a box on the screen. All of the element's contents, including any child elements, are contained within the box. The margin property can be used to enforce a distance between the target element's border and other outside elements specified in pixels, percentages of the available space to the element or em's, which are linked to the size of individual characters in the current font. The padding property is very similar, however it sets the distance between the border of an element and its contents. The following is an example of a stylesheet entry:</text>
-<text indent="1">p {</text>
-<text indent="2">width: 10px;</text>
-<text indent="2">height: 10px;</text>
-<text indent="2">margin: 10px, 15px, 10px, 15px;</text>
-<text indent="1">}</text>
+					<text indent="1">p {</text>
+					<text indent="2">width: 10px;</text>
+					<text indent="2">height: 10px;</text>
+					<text indent="2">margin: 10px, 15px, 10px, 15px;</text>
+					<text indent="1">}</text>
 				</paragraph>
 				<paragraph>
 					<text>The selector targets paragraph tags and the style properties set the height, width and margin properties of all paragraph elements in any document that references a stylesheet with that entry. There are too many properties to list here and CSS is a complicated technology with many corner cases. However, two important HTML element attributes help with targetting CSS styles. Each HTML element can have an id and class attribute set. The value of an id element must be unique within the context of a given HTML document. Multiple elements can have the same class value. In a CSS file, id and class values can be used in style selectors to target the relevant elements. An id value of 'uniqueElement' would be entered as '#uniqueElement' in a CSS selector. A class value of 'oneOfManyElements' would be entered as '.oneOfManyElements'. Id or class selectors can be combined with element selectors to target elements that are child elements of an element with a given id or class value. For instance, '#uniqueElement p' would target paragraph elements which are children of an element with an id of 'uniqueElement'.</text>

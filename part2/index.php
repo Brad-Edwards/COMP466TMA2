@@ -46,7 +46,6 @@
 		</script>
 	</head>
 	<body>
-		<text>HI EVERYONE!</text>
 		<div id="mainContentDiv" class="flexContainer">
 			<?php
 				if (!$isLoggedIn) {
