@@ -224,10 +224,9 @@
 						<li>Your Courses</li>
 						<?php
 							// Get list of courses user is registered for
-							$query = "SELECT "
 						?>
 						<li><hr></li>
-						<a href=""><li>Register</li></a>
+						<a href="" id="courseRegisterLink"><li>Register</li></a>
 						<a href=""><li>Grades</li></a>					
 					</ul>
 				</nav>
