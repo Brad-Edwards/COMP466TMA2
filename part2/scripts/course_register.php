@@ -51,7 +51,6 @@
 
 			} elseif (isset($_POST['selectedCourse'])) {
 				$courseId = trim($_POST['selectedCourse']);
-				
 			}
 		?>
 	<?php endif;
