@@ -204,7 +204,6 @@
 	<!-- User sent a file containing a course to add -->
 	<?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
 		<?php 
-			error_log("New Run");
 			if ($_FILES['courseFile']['error'] == UPLOAD_ERR_OK
 				&& is_uploaded_file($_FILES['courseFile']['tmp_name'])) {
 				

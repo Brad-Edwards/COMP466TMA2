@@ -43,8 +43,28 @@
 	flex:  1;
 	margin-left: 10px;
 	order: 2;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
+/******* Course Registration *******/
+
+#courseRegisterForm {
+	margin-top: 40px;
+	width: auto;
+}
+
+#courseRegisterFormDiv {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+	padding: 30px;
+}
+
+#courseRegisterFormDiv h2 {
+	text-align: center;
+}
 /******* Forms *******/
 
 .formButtonLeft {
@@ -110,12 +130,12 @@ body, html {
 	margin-bottom: 10px;
 }
 
-.formDiv input {
+.formDiv input, select {
 	flex: 2;
 	
 }
 
-.formDiv label, select {
+.formDiv label {
 	flex: 1;
 }
 

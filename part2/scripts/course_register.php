@@ -5,7 +5,6 @@
 	Date: July 27, 2021
 	Copyright: Brad Edwards, 2021
 	*/
-	error_log("course register top");
 	@session_start();
 	// Load database methods
 	require_once 'database_manager.php';
@@ -20,7 +19,6 @@
 			while (mysqli_stmt_fetch($stmt)) {
 				$options .= "<option value='$id'>$course $code</option>";
 			}
-			error_log($options);
 		} else {
 			error_log("error executing course list query");
 			error_log($db->error);
@@ -36,21 +34,70 @@
 		<div id="courseRegisterFormDiv" class="boxShadow">
 			<h2>Course Registration</h2>
 			<form id="courseRegisterForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-				<label>Select a course:</label>
-				<select name="selectedCourse" id="courseRegisterSelect">
-					<?php echo $options; ?>
-				</select>
-				<input class="formButtonLeft formButton defaultButton" type="submit" name="submitButton" value="Submit">
-				<input class="formButtonRight formButton alternateButton" type="submit" name="cancelButton" value="Cancel">
+				<div class="formDiv flexContainer">
+					<label>Select a course:</label>
+					<select name="selectedCourse" id="courseRegisterSelect" class="formElement">
+						<?php echo $options; ?>
+					</select>
+				</div>
+				<div class="formDiv flexContainer">
+					<input class="formButtonLeft formButton defaultButton" type="submit" name="submitButton" value="Submit">
+					<input class="formButtonRight formButton alternateButton" type="submit" name="cancelButton" value="Cancel">
+				</div>
 			</form>
 		</div>
 
 	<?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
 		<?php 
 			if(isset($_POST["cancelButton"])) {
-
+				header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
 			} elseif (isset($_POST['selectedCourse'])) {
 				$courseId = trim($_POST['selectedCourse']);
+				// Have to check if user already has course session
+				// Start by getting student_id
+				$username = trim($_SESSION['username']);
+				$query = "SELECT student_id FROM students INNER JOIN users ON students.user_id = users.user_id WHERE username='$username';";
+				$studentId;
+				if ($stmt = mysqli_prepare($db, $query)) {
+					if (mysqli_stmt_execute($stmt)) {
+						mysqli_stmt_store_result($stmt);
+						if (mysqli_stmt_num_rows($stmt) != 1) {
+							error_log("Course registration: user somehow not in database.");
+						}
+						mysqli_stmt_bind_result($stmt, $studentId);
+						mysqli_stmt_fetch($stmt);
+					} else {
+						error_log("Could not query database for student id in course registrations");
+						error_log($db->error);
+						return false;
+					}
+				} else {
+					error_log("could not prepare query for student id in course registration.");
+					error_log($db->error);
+					return false;
+				}
+
+				// Now check for sessions
+				$query = "SELECT session_id FROM sessions WHERE course_id='$courseId' AND student_id='$studentId';";
+				if ($stmt = mysqli_prepare($db, $query)) {
+					if (mysqli_stmt_execute($stmt)) {
+						mysqli_stmt_store_result($stmt);
+						if (mysqli_stmt_num_rows($stmt) > 0) {
+							error_log("user already registered in course.");
+							// TODO: error message to user
+							header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
+							return false;
+						}
+					} else {
+						error_log("Could not execute query to check if user already registered in course.");
+						error_log($db->error);
+						return false;
+					}
+				} else {
+					error_log("Could not prepare query to check if user already registered in course.");
+					error_log($db->error);
+					return false;
+				}
 			}
 		?>
 	<?php endif;
