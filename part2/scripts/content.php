@@ -222,31 +222,33 @@
 					<ul>
 						<li>Your Courses</li>
 						<?php
-							$db = @dbConnect();
+							$dbCon = @dbConnect();
 							$username = trim($_SESSION['username']);
-							$query = "SELECT course_name, course_code, course_id FROM courses 
+							$query = "SELECT course_name, course_code, courses.course_id FROM courses 
 								INNER JOIN sessions ON sessions.course_id=courses.course_id 
 								INNER JOIN students ON sessions.student_id=students.student_id 
 								INNER JOIN users ON users.user_id=students.user_id
-								WHERE username='$username'";
-							$db = @dbConnect();
-							if ($stmt = mysqli_prepare($db, $query)) {
+								WHERE username='$username';";
+							$dbCon = @dbConnect();
+							error_log("pre statement\n$query\n\n" . $dbCon->error);
+							if ($stmt = mysqli_prepare($dbCon, $query)) {
 								if (mysqli_stmt_execute($stmt)) {
 									mysqli_stmt_store_result($stmt);
 									mysqli_stmt_bind_result($stmt, $courseName, $courseCode, $courseId);
 									while (mysqli_stmt_fetch($stmt)) {
-										echo "<li><a href='display_course.php' class='registeredCourseLink'>$couresCode $courseName</li></a>";
+										echo "<li><a href='display_course.php?course=$courseId' class='registeredCourseLink'>$courseCode $courseName</li></a>";
 									}
 								} else {
 									error_log("Could not execute query to get user's registered courses.");
-									error_log($db->error);
+									error_log($dbCon->error);
 									return false;
 								}
 							} else {
 								error_log("Could not prepare query to get user's registered courses");
-								error_log($db->error);
+								error_log($dbCon->error);
 								return false;
 							}
+							@dbClose($dbCon);
 						?>
 						<li><hr></li>
 						<a href="" id="courseRegisterLink"><li>Register</li></a>

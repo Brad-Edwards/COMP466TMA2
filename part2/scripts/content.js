@@ -6,7 +6,7 @@
 	Copyright: Brad Edwards, 2021
 */
 
-window.addEventListener('load', init);
+window.addEventListener('DOMContentLoaded', init);
 
 // Handles user request to add a new course
 // Returns: void
