@@ -86,6 +86,25 @@
 							error_log("user already registered in course.");
 							// TODO: error message to user
 							header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
+						}
+
+						// Now register in session
+						$query = "INSERT INTO sessions (course_id, student_id, start_date) VALUES ('$courseId', '$studentId', CURDATE());";
+						if ($stmt = mysqli_prepare($db, $query)) {
+							if (mysqli_stmt_execute($stmt)) {
+								mysqli_stmt_store_result($stmt);
+								if (mysqli_affected_rows($stmt) == 1) {
+									error_log("not able to insert session for course registration");
+								}
+								header("location: http://34.213.198.190/COMP466TMA2/part2/index.php");
+							} else {
+								error_log("could not execute insert session for new course registration.");
+								error_log($db->error);
+								return false;
+							}
+						} else {
+							error_log("could not prepare query to insert a new session for course registration.");
+							error_log($db->close());
 							return false;
 						}
 					} else {
