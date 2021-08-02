@@ -53,15 +53,56 @@
 						foreach ($con->content[0] AS $scon) {
 							// Content could be paragraphs or subsections
 							if ($scon->getName() == 'paragraph') {
-								foreach ($scon->text AS $text) {
-									$indent = $text->attributes()->indent;
-									$spaces = "";
-									if ($indent > 0) {
-										for ($i = 0; $i < $indent; $i++) {
-											$spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;";
+								foreach ($scon AS $text) {
+									// Parse text nodes
+									if ($text->getName() == 'text') {
+										$indent = $text->attributes()->indent;
+										$spaces = "";
+										if ($indent > 0) {
+											for ($i = 0; $i < $indent; $i++) {
+												$spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;";
+											}
+										}
+										$content .= "<p>$spaces$text</p>";
+									}
+									// Parse list nodes
+									if ($text->getName() == 'list') {
+										$content .= "<ul>";
+										foreach ($text->list_items[0] AS $item) {
+											$content .= "<li>$item</li>";
+										}
+										$content .= "</ul>";
+									}
+								}
+							}
+							// Parse subsection_element
+							if ($scon->getName() == 'subsection_element') {
+								$content .= "<h3>$scon->title</h3>";
+								foreach ($scon->content[0] AS $secon) {
+									// Content could be paragraphs or subsections
+									if ($secon->getName() == 'paragraph') {
+										foreach ($secon AS $text) {
+											// Parse text nodes
+											if ($text->getName() == 'text') {
+												$indent = $text->attributes()->indent;
+												$spaces = "";
+												if ($indent > 0) {
+													for ($i = 0; $i < $indent; $i++) {
+														$spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;";
+													}
+												}
+												$content .= "<p>$spaces$text</p>";
+											}
+											// Parse list nodes
+											if ($text->getName() == 'list') {
+												$content .= "<ul>";
+												foreach ($text->list_items[0] AS $item) {
+													$content .= "<li>$item</li>";
+												}
+												$content .= "</ul>";
+											}
 										}
 									}
-									$content .= "<p>$spaces$text</p>";
 								}
 							}
 						}

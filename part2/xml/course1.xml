@@ -95,7 +95,7 @@
 							<text indent="1">&#8249;html&#8250;</text>
 							<text indent="2">&#8249;head&#8250;</text>
 							<text indent="3">&#8249;meta charset = 'utf-8'&#8250;</text>
-							<text>&#8249;title&#8250;Welcome&#8249;/title&#8250;</text> 
+							<text indent="3">&#8249;title&#8250;Welcome&#8249;/title&#8250;</text> 
 							<text indent="3">&#8249;link rel='stylesheet' src='styles.css'&#8250;</text>
 							<text indent="2">&#8249;/head&#8250;</text>
 							<text indent="2">&#8249;body&#8250;</text>
