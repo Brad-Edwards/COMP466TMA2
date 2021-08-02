@@ -17,6 +17,10 @@
 	width: 20%;
 }
 
+#addCourseFormDiv .formDiv {
+	flex-direction: row;
+}
+
 #contentDiv {
 	order: 1;
 	flex: 1;
@@ -80,13 +84,6 @@
 	margin-bottom: 10px;
 }
 
-.formDiv input {
-	flex: 2;
-}
-
-.formDiv label {
-	flex: 1;
-}
 
 /******* General *******/
 
@@ -115,7 +112,7 @@ body, html {
 	display: flex;
 	flex-grow: 1;
 }
-
+6
 /******* Login/Registration *******/
 
 .formButtonLeft {
@@ -126,18 +123,34 @@ body, html {
 	margin-left: 10px;
 }
 
+#loginFormDiv .formDiv {
+	flex-direction: row;
+}
+
 .formDiv {
 	margin-bottom: 10px;
+	flex-direction: column;
 }
 
-.formDiv input, select {
-	flex: 2;
-	
+.formDiv :nth-child(1) { 
+	order: 1;
 }
-
-.formDiv label {
-	flex: 1;
+.formDiv :nth-child(2) {
+	order: 2;
 }
+.formDiv :nth-child(3) {
+	order: 3;
+}
+.formDiv :nth-child(4) {
+	order: 4;
+}
+.formDiv :nth-child(5) {
+	order: 5;
+}
+.formDiv :nth-child(6) {
+	order: 6;
+}
++++
 
 #loginForm, #registrationForm {
 	margin-top: 40px;
@@ -179,6 +192,17 @@ body, html {
 #navbarTitle h2 {
 	padding-left: 30px;
 }
+
+/******* Quizzes *******/
+
+#quizFormDiv, #quizForm {
+	flex-direction: column;
+}
+
+#quizButtonDiv {
+	flex-direction: row;
+}
+
 
 /******* User Auth and Reg *******/
 .is-invalid {

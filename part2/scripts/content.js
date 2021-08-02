@@ -44,6 +44,22 @@ function displayCourseClickHandler(e) {
 	request.send();
 }
 
+// Handles user request to display quiz in window
+// Returns: void
+function displayQuizClickHandler(e) {
+	e.preventDefault();
+	var div = document.getElementById('userContentDiv');
+	var address = e.target.href;
+	var request = new XMLHttpRequest();
+	request.open("GET", address, true);
+	request.onreadystatechange = function() {
+		if (this.readyState = 4 && this.status == 200) {
+			div.innerHTML = request.responseText;
+		}
+	}
+	request.send();
+}
+
 // Returns the current window url location
 // returns: Current window url as a string
 function getCurrentAddress() {
@@ -62,6 +78,10 @@ function init() {
 		var courseLinks = document.getElementsByClassName('registeredCourseLink');
 		for (var i = 0; i < courseLinks.length; i++) {
 			courseLinks[i].addEventListener('click', displayCourseClickHandler);
+		}
+		var quizLinks = document.getElementsByClassName('courseQuizLink');
+		for (var i = 0; i < quizLinks.length; i++) {
+			quizLinks[i].addEventListener('click', displayQuizClickHandler);
 		}
 	}
 }

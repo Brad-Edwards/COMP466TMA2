@@ -88,7 +88,6 @@
 		$courseContent = $course->sections->asXML();
 		$courseContent = str_replace("'", "''", $courseContent);
 
-		error_log($courseContent);
 		$query = "START TRANSACTION;";
 		$query = "INSERT INTO courses (course_name, course_code, summary, introduction, content) VALUES ('$name', '$code', '$summary', '$introduction', '$courseContent');";
 		$query .= "SET @course_id = LAST_INSERT_ID();";
@@ -118,7 +117,6 @@
 			do {
 				if ($resultSet = $db->store_result()) {
 					while ($row = $resultSet->fetch_row()) {
-						error_log("Courses added to db: " . $row[0]);
 						if ($row[0] == 1) {
 							return true;
 						}
@@ -191,12 +189,14 @@
 								INNER JOIN users ON users.user_id=students.user_id
 								WHERE username='$username';";
 							$dbCon = @dbConnect();
+							$quizzes = "";
 							if ($stmt = mysqli_prepare($dbCon, $query)) {
 								if (mysqli_stmt_execute($stmt)) {
 									mysqli_stmt_store_result($stmt);
 									mysqli_stmt_bind_result($stmt, $courseName, $courseCode, $courseId);
 									while (mysqli_stmt_fetch($stmt)) {
 										echo "<li><a href='scripts/display_course.php?course=$courseId' class='registeredCourseLink'>$courseCode $courseName</li></a>";
+										$quizzes .= "<li><a href='scripts/display_quiz.php?course=$courseId' class='courseQuizLink'>$courseCode $courseName</li></a>";
 									}
 								} else {
 									error_log("Could not execute query to get user's registered courses.");
@@ -209,6 +209,8 @@
 								return false;
 							}
 							@dbClose($dbCon);
+							echo "<li>&nbsp;</li><li>Your Quizzes</li>";
+							echo $quizzes;
 						?>
 						<li><hr></li>
 						<a href="" id="courseRegisterLink"><li>Register</li></a>
