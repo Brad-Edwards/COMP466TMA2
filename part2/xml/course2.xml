@@ -41,8 +41,8 @@
 					<text>JavaScript programs, called scripts, can be run on the client-side or server-side. Client-side scripts execute within the user's browser and often manipulate the presentation of the web site. Server-side scripts execute on the server and are used to implement any logic required from the server.</text>
 				</paragraph>
 				<paragraph>
-					<text>Scripts can be included in HTML documents within &lt;script&gt; tags. Any text within the tags will be interpreted as JavaScript commands. Scripts can also be written in their own files, usually with .js extensions. All of the text within the file will be interpreted as JavaScript.  These files can be included by HTML documents, again using script tags, as follows:</text><break />
-					<text indent="1">&lt;script type=\text/javascript\ src=\script.js\&gt;&lt;/script&gt;</text>
+					<text>Scripts can be included in HTML documents within &#8249;script&#8250; tags. Any text within the tags will be interpreted as JavaScript commands. Scripts can also be written in their own files, usually with .js extensions. All of the text within the file will be interpreted as JavaScript.  These files can be included by HTML documents, again using script tags, as follows:</text><break />
+					<text indent="1">&#8249;script type=\text/javascript\ src=\script.js\&#8250;&#8249;/script&#8250;</text>
 				</paragraph>
 				<paragraph>
 					<text>Writing scripts in separate files allows them to be reused in multiple pages or in other projects and may allow IDEs or text editors to better interpret the file content and assist the developer.</text>
@@ -74,14 +74,14 @@
 					<text>Arrays are zero-indexed and array elements can be accessed using square brackets. For instance, myArray[2] would access the third element of the array. Assigning a value to an array index larger than the current size of the array will cause the array to be extended and the value added at the specified index. This can be the source of subtle errors as it is not usually a developer's intent to assign beyond the end of an array. Elements between the former last element of the array and the new last element will be set to undefined.</text>
 				</paragraph>
 				<paragraph>
-					<text>Standard relational operators are provided such as ==, !=, &lt;, &gt;, &gt;=, &lt;=. Some of the control flow statements available include the following:</text><break />
+					<text>Standard relational operators are provided such as ==, !=, &#8249;, &#8250;, &#8250;=, &#8249;=. Some of the control flow statements available include the following:</text><break />
 					<indent /><list>
 						<ordered>false</ordered>
 						<list_items>
 							<list_item>if (x ==y) { foo(); }</list_item>
 							<list_item>switch (x) { case 1: foo(); break; case 2: bar(); break; default: doSomethingElse(); }</list_item>
 							<list_item>while (x == true) { amazeUsAll(); }</list_item>
-							<list_item>for (var i = 0; i &lt; 5; i++) { dance(); }</list_item>
+							<list_item>for (var i = 0; i &#8249; 5; i++) { dance(); }</list_item>
 						</list_items>
 					</list>
 				</paragraph>
@@ -126,7 +126,7 @@
 			<title>The Document Object Model (DOM)</title>
 			<content>
 				<paragraph>
-					<text>JavaScript works with HTML documents through the DOM. The DOM concept breaks an HTML document into a tree of nested elements. The &lt;html&gt; node of a HTML document becomes the root node of the DOM. All other elements are nested below it. The properties of each element, such as width, alignment, and content can all be accessed once a node has been located in JavaScript. Nodes are located by traversing the DOM and selecting desired nodes.</text>
+					<text>JavaScript works with HTML documents through the DOM. The DOM concept breaks an HTML document into a tree of nested elements. The &#8249;html&#8250; node of a HTML document becomes the root node of the DOM. All other elements are nested below it. The properties of each element, such as width, alignment, and content can all be accessed once a node has been located in JavaScript. Nodes are located by traversing the DOM and selecting desired nodes.</text>
 				</paragraph>
 				<paragraph>
 					<text>In JavaScript the DOM is represented by the global Document object. The Document object has a number of helper methods to make working with the DOM easier. These include getElementByID(id) for selecting elements with specific id values. Elements can be created with the createElement method, inserted with the insertBefore method and removed from a parent node with the removeChild method. There are many more methods available and the reader should consult authoritative sources.</text>

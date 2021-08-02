@@ -87,42 +87,42 @@
 							<text>&#8249;p&#8250;Paragraph text&#8249;/p&#8250;</text>
 						</paragraph>
 						<paragraph>
-							<text>Properly formed HTML files start with &lt;!DOCTYPE html&gt; tag, which identifies the document as an HTML file. The base tags of an HTML file, called the root, are the &lt;html&gt; tag. The basic structure of an HTML document is shown below.
+							<text>Properly formed HTML files start with &#8249;!DOCTYPE html&#8250; tag, which identifies the document as an HTML file. The base tags of an HTML file, called the root, are the &#8249;html&#8250; tag. The basic structure of an HTML document is shown below.
 							</text>
 						</paragraph>
 						<paragraph>
-							<text>&lt;!DOCTYPE html&gt;</text>
-							<text indent="1">&lt;html&gt;</text>
-							<text indent="2">&lt;head&gt;</text>
-							<text indent="3">&lt;meta charset = 'utf-8'&gt;</text>
-							<text>&lt;title&gt;Welcome&lt;/title&gt;</text> 
-							<text indent="3">&lt;link rel='stylesheet' src='styles.css'&gt;</text>
-							<text indent="2">&lt;/head&gt;</text>
-							<text indent="2">&lt;body&gt;</text>
-							<text indent="3">&lt;p&gt;This is some HTML5&lt;/p&gt;</text>
-							<text indent="2">&lt;/body&gt;</text>
-							<text indent="1">&lt;/html&gt;</text>
+							<text>&#8249;!DOCTYPE html&#8250;</text>
+							<text indent="1">&#8249;html&#8250;</text>
+							<text indent="2">&#8249;head&#8250;</text>
+							<text indent="3">&#8249;meta charset = 'utf-8'&#8250;</text>
+							<text>&#8249;title&#8250;Welcome&#8249;/title&#8250;</text> 
+							<text indent="3">&#8249;link rel='stylesheet' src='styles.css'&#8250;</text>
+							<text indent="2">&#8249;/head&#8250;</text>
+							<text indent="2">&#8249;body&#8250;</text>
+							<text indent="3">&#8249;p&#8250;This is some HTML5&#8249;/p&#8250;</text>
+							<text indent="2">&#8249;/body&#8250;</text>
+							<text indent="1">&#8249;/html&#8250;</text>
 						</paragraph>
 						<paragraph>
-							<text>The &lt;html&gt; is the root of the document and encompasses all HTML elements in the document.These tags are needed as the HTML could be embedded within elements of another document type such as XML.</text>
+							<text>The &#8249;html&#8250; is the root of the document and encompasses all HTML elements in the document.These tags are needed as the HTML could be embedded within elements of another document type such as XML.</text>
 						</paragraph>
 						<subsection_element>
 							<order>1</order>
 							<level>3</level>
-							<title>&lt;head&gt;</title>
+							<title>&#8249;head&#8250;</title>
 							<content>
 								<paragraph>
-									<text>The &lt;head&gt; tag may contain information about the HTML document, such as the character set, specified by the &lt;meta&gt; tag and links to resources such as CSS sheets and JavaScript scripts. Resources to be included in the document are put in &lt;link&gt; tags. &lt;link&gt; tags, as with many other HTML elements, may have attributes. In the case of the &lt;link&gt; tag, 'rel' declares the relationship between the linked resource and the HTML document. In the case above the rel attribute indicates the linked resource is a stylesheet. The 'type' attribute declares the type of the linked resource and the 'href' attribute gives the location of the resouce to link. The &lt;title&gt; tag is often displayed by browsers as the title of the tab in which the document is displayed.</text>
+									<text>The &#8249;head&#8250; tag may contain information about the HTML document, such as the character set, specified by the &#8249;meta&#8250; tag and links to resources such as CSS sheets and JavaScript scripts. Resources to be included in the document are put in &#8249;link&#8250; tags. &#8249;link&#8250; tags, as with many other HTML elements, may have attributes. In the case of the &#8249;link&#8250; tag, 'rel' declares the relationship between the linked resource and the HTML document. In the case above the rel attribute indicates the linked resource is a stylesheet. The 'type' attribute declares the type of the linked resource and the 'href' attribute gives the location of the resouce to link. The &#8249;title&#8250; tag is often displayed by browsers as the title of the tab in which the document is displayed.</text>
 								</paragraph>
 							</content>			
 						</subsection_element>
 						<subsection_element>
 							<order>2</order>
 							<level>3</level>
-							<title>&lt;body&gt;</title>
+							<title>&#8249;body&#8250;</title>
 							<content>
 								<paragraph>
-									<text>The &lt;body&gt; contains the content of the document. There are many tags that can be contained within the &lt;body&gt; tags. The paragraph element, &lt;p&gt;, groups text into a paragraph. Several other elements can be used to declare various levels of headers. Header elements are &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc. Images can be included using &lt;img&gt; tags with a 'src' to provide its location. List elements are also available, both ordered (&lt;ol&gt;) and unordered (&lt;ul&gt;). List elements included within the parent tags using the &lt;li&gt; tags.</text>
+									<text>The &#8249;body&#8250; contains the content of the document. There are many tags that can be contained within the &#8249;body&#8250; tags. The paragraph element, &#8249;p&#8250;, groups text into a paragraph. Several other elements can be used to declare various levels of headers. Header elements are &#8249;h1&#8250;, &#8249;h2&#8250;, &#8249;h3&#8250;, etc. Images can be included using &#8249;img&#8250; tags with a 'src' to provide its location. List elements are also available, both ordered (&#8249;ol&#8250;) and unordered (&#8249;ul&#8250;). List elements included within the parent tags using the &#8249;li&#8250; tags.</text>
 								</paragraph>
 							</content>
 						</subsection_element>
@@ -132,29 +132,29 @@
 							<title>Tables</title>
 							<content>
 								<paragraph>
-									<text>&lt;table&gt;</text>
-									<text indent="1">&lt;thead&gt;</text>
-									<text indent="2">&lt;tr&gt;</text>
-									<text indent="3">&lt;th&gt;Header 1&lt;/th&gt;</text>
-									<text indent="3">&lt;th&gt;Header 2&lt;/th&gt;</text>
-									<text indent="2">&lt;/tr&gt;</text>
-									<text indent="1">&lt;/thead&gt;</text>
-									<text indent="1">&lt;/tbody&gt;</text>
-									<text indent="2">&lt;tr&gt;</text>
-									<text indent="3">&lt;td&gt;Cell Text&lt;/td&gt;</text>
-									<text indent="3">&lt;td&gt;Cell Text&lt;/td&gt;</text>
-									<text indent="2">&lt;/tr&gt;</text>
-									<text indent="1">&lt;/tbody&gt;</text>
-									<text indent="1">&lt;/tfoot&gt;</text>
-									<text indent="2">&lt;tr&gt;</text>
-									<text indent="3">&lt;th&gt;Footer 1&lt;/th&gt;</text>
-									<text indent="3">&lt;th&gt;Footer 2&lt;/th&gt;</text>
-									<text indent="2">&lt;/tr&gt;</text>
-									<text indent="1">&lt;/tfoot&gt;</text>
-									<text>&lt;/table&gt;</text>
+									<text>&#8249;table&#8250;</text>
+									<text indent="1">&#8249;thead&#8250;</text>
+									<text indent="2">&#8249;tr&#8250;</text>
+									<text indent="3">&#8249;th&#8250;Header 1&#8249;/th&#8250;</text>
+									<text indent="3">&#8249;th&#8250;Header 2&#8249;/th&#8250;</text>
+									<text indent="2">&#8249;/tr&#8250;</text>
+									<text indent="1">&#8249;/thead&#8250;</text>
+									<text indent="1">&#8249;/tbody&#8250;</text>
+									<text indent="2">&#8249;tr&#8250;</text>
+									<text indent="3">&#8249;td&#8250;Cell Text&#8249;/td&#8250;</text>
+									<text indent="3">&#8249;td&#8250;Cell Text&#8249;/td&#8250;</text>
+									<text indent="2">&#8249;/tr&#8250;</text>
+									<text indent="1">&#8249;/tbody&#8250;</text>
+									<text indent="1">&#8249;/tfoot&#8250;</text>
+									<text indent="2">&#8249;tr&#8250;</text>
+									<text indent="3">&#8249;th&#8250;Footer 1&#8249;/th&#8250;</text>
+									<text indent="3">&#8249;th&#8250;Footer 2&#8249;/th&#8250;</text>
+									<text indent="2">&#8249;/tr&#8250;</text>
+									<text indent="1">&#8249;/tfoot&#8250;</text>
+									<text>&#8249;/table&#8250;</text>
 								</paragraph>
 								<paragraph>
-									<text>Tables can be created using HTML using the elements in the examle above. The header, body and footer elements are self-explanatory. The table row tags, &lt;tr&gt;, enclose data for a single row. The &lt;th&gt; enclose header or footer cell data for each row, and the &lt;td&gt; enclose data for rows within the table body.</text>
+									<text>Tables can be created using HTML using the elements in the examle above. The header, body and footer elements are self-explanatory. The table row tags, &#8249;tr&#8250;, enclose data for a single row. The &#8249;th&#8250; enclose header or footer cell data for each row, and the &#8249;td&#8250; enclose data for rows within the table body.</text>
 								</paragraph>
 							</content>
 						</subsection_element>
@@ -164,7 +164,7 @@
 							<title>Links</title>
 							<content>
 								<paragraph>
-									<text>Links are another important element. A link element such as &lt;a href='www.someaddress.com'&gt;Click here &lt;/a&gt; would create a hyperlink to the address listed in the href attribute.</text>
+									<text>Links are another important element. A link element such as &#8249;a href='www.someaddress.com'&#8250;Click here &#8249;/a&#8250; would create a hyperlink to the address listed in the href attribute.</text>
 								</paragraph>
 							</content>
 						</subsection_element>
@@ -195,10 +195,10 @@
 								</paragraph>
 								<paragraph>
 									<text>Input tags within a form can be set to any of these types to submit data. Forms take the following general shape:</text>
-									<text indent="1">&lt;form method='post' action = 'http://www.aserver.com'&gt;</text>
-									<text indent="2">&lt;label&gt;Color&lt;/label&gt;</text>
-									<text indent="2">&lt;input type='color' autofocus/&gt;</text>
-									<text indent="1">&lt;/form&gt;</text>
+									<text indent="1">&#8249;form method='post' action = 'http://www.aserver.com'&#8250;</text>
+									<text indent="2">&#8249;label&#8250;Color&#8249;/label&#8250;</text>
+									<text indent="2">&#8249;input type='color' autofocus/&#8250;</text>
+									<text indent="1">&#8249;/form&#8250;</text>
 								</paragraph>
 								<paragraph>
 									<text>The method attribute in this example declares the input will use the HTTP POST method in its message to the server. The action attribute indicates the server to target with the POST message.</text>

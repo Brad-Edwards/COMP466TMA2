@@ -35,12 +35,12 @@
 					<text>XML documents consist of text surrounded in tags, which will be very familiar to those used to HTML and usually have a .xml extension. XML parsers turn XML documents into trees that can be traversed and manipulated. If an XML parser can parse an XML document successfully, the document is considered well-formed. Developers are free to use whatever tags they like, nested to arbitrary depths. To constrain this freedom and ensure documents conform to a specification developers can create Document Type Definition (DTD) or XML schema documents. These documents specify how a given XML document should be formatted. If an XML document meets the requirements of a DTD or schema, the document is considered valid. Of note, XML is case sensitive so developers need to pay attention to being consistent.</text>
 				</paragraph>
 				<paragraph>
-					<text indent="1">&lt;?xml version = \1.0\?&gt;</text><break />
-					<text indent="1">&lt;!-- a comment! --&gt;</text><break /><break />
-					<text indent="1">&lt;cow&gt;</text><break />
-					<text indent="2">&lt;colour&gt;Brown&lt;/colour&gt;</text><break />
-					<text indent="2">&lt;hasSpots&gt;Yes&lt;/hasSpots&gt;</text><break />
-					<text indent="1">&lt;/cow&gt;</text>
+					<text indent="1">&#8249;?xml version = \1.0\?&#8250;</text><break />
+					<text indent="1">&#8249;!-- a comment! --&#8250;</text><break /><break />
+					<text indent="1">&#8249;cow&#8250;</text><break />
+					<text indent="2">&#8249;colour&#8250;Brown&#8249;/colour&#8250;</text><break />
+					<text indent="2">&#8249;hasSpots&#8250;Yes&#8249;/hasSpots&#8250;</text><break />
+					<text indent="1">&#8249;/cow&#8250;</text>
 				</paragraph>
 				<paragraph>
 					<text>The above is an example of a very simple XML document. The first tag identifies the document as an XML document. This is a standardized element to assist parsers. The second line is an XML comment that developers can use as code documentation. Comments will not be parsed by the XML parser. The rest of the document is arbitrary in the same sense that an object-oriented class is arbitrary. Any elements with any values can be included.</text>
@@ -53,7 +53,7 @@
 			<content>
 				<paragraph>
 					<text>Since XML documents can be defined by any developer, there is the possibility of naming collisions when XML documents are shared. To manage this, XML allows for declaring namespaces. Namespaces consist of an arbitrary prefix, which must not include 'xml', and a URI to uniquely identify the namespace. For instance, the following is a namespace declaration:</text><break />
-					<text indent="1">&lt;farm:table xmlns:farm='http://www.farmerjoe.com'&gt;</text>
+					<text indent="1">&#8249;farm:table xmlns:farm='http://www.farmerjoe.com'&#8250;</text>
 				</paragraph>
 			</content>
 		</section>
@@ -62,7 +62,7 @@
 			<title>DTD's and Schema</title>
 			<content>
 				<paragraph>
-					<text>DTDs are declared in .dtd files and use Extended Backus-Naur Form (EBNF) grammar. Schemas are declared using XML syntax. Schema elements are declared within &lt;schema&gt; tags. Elements are either simple or complex types, with complex types allowed to contain other elements. XML includes string, boolean, decimal, float, double, long, int, short, date and time as built-in elements that can be used as simple types. In addition, there are publically available XML vocabularies that can be by developers. Examples include MathML, Scalable Vector Graphics and Wireless Markup Language.</text>
+					<text>DTDs are declared in .dtd files and use Extended Backus-Naur Form (EBNF) grammar. Schemas are declared using XML syntax. Schema elements are declared within &#8249;schema&#8250; tags. Elements are either simple or complex types, with complex types allowed to contain other elements. XML includes string, boolean, decimal, float, double, long, int, short, date and time as built-in elements that can be used as simple types. In addition, there are publically available XML vocabularies that can be by developers. Examples include MathML, Scalable Vector Graphics and Wireless Markup Language.</text>
 				</paragraph>
 			</content>
 		</section>
