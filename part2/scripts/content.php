@@ -9,34 +9,6 @@
 	// Load database methods
 	require_once 'database_manager.php'; 
 
-	function addSubsectionQuery($parent, &$query) {
-		$randomString = generateRandomString();
-		$query .= "SET @$randomString = LAST_INSERT_ID();";
-		foreach ($parent->content[0] AS $content) {			
-			// Find the subsections
-			if ($content->getName() == 'subsection' || $content->getName() == 'subsection_element') {
-				$id;
-				if ($content->getName() == 'subsection') {
-					$id = "section_id";
-				} else {
-					$id = "parent_subsection_id";
-				}
-				$paragraphs = "";
-				$subquery = "";
-				$subsectionElements = array();
-				foreach($content->content[0] AS $subcontent) {
-					if ($subcontent->getName() == 'paragraph') {
-						$paragraphs .= $subcontent->asXML();
-					}
-				}
-				$paragraphs = str_replace("'", "''", $paragraphs);
-				$query .= "INSERT INTO subsections ($id, subsection_order, subsection_level, title, content) VALUES (@$randomString, '$content->order', '$content->level', '$content->title', '$paragraphs');";
-				// Add any subsections
-				addSubsectionQuery($content, $query);	
-			} 
-		}
-	}
-
 	function addCourse($course) {
 		if ($course->getName() != 'course_type') {
 			error_log("Can only add XML course_type to the database.");
@@ -113,28 +85,17 @@
 		$summary = str_replace("'", "''", $summary);
 		$introduction = $course->introduction->asXML();
 		$introduction = str_replace("'", "''", $introduction);
+		$courseContent = $course->sections->asXML();
+		$courseContent = str_replace("'", "''", $courseContent);
 
+		error_log($courseContent);
 		$query = "START TRANSACTION;";
-		$query .= "INSERT INTO courses (course_name, course_code, summary, introduction) VALUES ('$name', '$code', '$summary', '$introduction');";
+		$query = "INSERT INTO courses (course_name, course_code, summary, introduction, content) VALUES ('$name', '$code', '$summary', '$introduction', '$courseContent');";
 		$query .= "SET @course_id = LAST_INSERT_ID();";
 
 		// Add course_instructors
 		foreach ($instructors AS $instructor) {
 			$query .= "INSERT INTO course_instructors (course_id, instructor_id) VALUES (@course_id, '$instructor[2]');";
-		}
-
-		// Add sections and subsections
-		foreach ($course->sections->section AS $section) {
-			$paragraphs = "";
-			foreach ($section->content[0] AS $content) {
-				if ($content->getName() == 'paragraph') {
-					$paragraphs .= $content->asXML();
-				}
-			}
-			$paragraphs = str_replace("'", "''", $paragraphs);
-			$title = str_replace("'", "''", $section->title);
-			$query .= "INSERT INTO sections (course_id, section_order, title, content) VALUES (@course_id, '$section->order', '$title', '$paragraphs');";
-			addSubsectionQuery($section, $query);
 		}
 
 		// Add assignments
@@ -230,13 +191,12 @@
 								INNER JOIN users ON users.user_id=students.user_id
 								WHERE username='$username';";
 							$dbCon = @dbConnect();
-							error_log("pre statement\n$query\n\n" . $dbCon->error);
 							if ($stmt = mysqli_prepare($dbCon, $query)) {
 								if (mysqli_stmt_execute($stmt)) {
 									mysqli_stmt_store_result($stmt);
 									mysqli_stmt_bind_result($stmt, $courseName, $courseCode, $courseId);
 									while (mysqli_stmt_fetch($stmt)) {
-										echo "<li><a href='display_course.php?course=$courseId' class='registeredCourseLink'>$courseCode $courseName</li></a>";
+										echo "<li><a href='scripts/display_course.php?course=$courseId' class='registeredCourseLink'>$courseCode $courseName</li></a>";
 									}
 								} else {
 									error_log("Could not execute query to get user's registered courses.");

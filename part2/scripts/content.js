@@ -27,6 +27,23 @@ function addCourseClickHandler(e) {
 	request.send();
 }
 
+// Handles user request to display course in window
+// Returns: void
+function displayCourseClickHandler(e) {
+	// Prevent accidental error out
+	e.preventDefault();
+	var div = document.getElementById('userContentDiv');
+	var address = e.target.href;
+	var request = new XMLHttpRequest();
+	request.open("GET", address, true);
+	request.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			div.innerHTML = request.responseText;
+		}
+	}
+	request.send();
+}
+
 // Returns the current window url location
 // returns: Current window url as a string
 function getCurrentAddress() {
@@ -42,6 +59,10 @@ function init() {
 	} else {
 		// Add student specific listeners
 		document.getElementById('courseRegisterLink').addEventListener('click', registerCourseClickHandler);
+		var courseLinks = document.getElementsByClassName('registeredCourseLink');
+		for (var i = 0; i < courseLinks.length; i++) {
+			courseLinks[i].addEventListener('click', displayCourseClickHandler);
+		}
 	}
 }
 
@@ -58,8 +79,6 @@ function registerCourseClickHandler(e) {
 	request.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			div.innerHTML = request.responseText;
-			console.log(request.responseText);
-			console.log("froggies");
 		}
 	}
 	request.send();
