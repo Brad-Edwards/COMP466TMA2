@@ -84,7 +84,7 @@
 						</paragraph>
 						<paragraph>
 							<indent />
-							<text>&lt;p&gt;Paragraph text&lt;/p&gt;.</text>
+							<text>&#8249;p&#8250;Paragraph text&#8249;/p&#8250;</text>
 						</paragraph>
 						<paragraph>
 							<text>Properly formed HTML files start with &lt;!DOCTYPE html&gt; tag, which identifies the document as an HTML file. The base tags of an HTML file, called the root, are the &lt;html&gt; tag. The basic structure of an HTML document is shown below.
