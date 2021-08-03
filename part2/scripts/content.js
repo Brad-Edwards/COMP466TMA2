@@ -9,7 +9,7 @@
 window.addEventListener('DOMContentLoaded', init);
 
 // Handles user request to add a new course
-// Returns: void
+// Returns: false - to avoid default link behaviour
 function addCourseClickHandler(e) {
 	// Don't error out by accident
 	e.preventDefault();
@@ -25,10 +25,11 @@ function addCourseClickHandler(e) {
 		}
 	}
 	request.send();
+	return false;
 }
 
 // Handles user request to display course in window
-// Returns: void
+// Returns: false - to avoid default link behaviour
 function displayCourseClickHandler(e) {
 	// Prevent accidental error out
 	e.preventDefault();
@@ -42,10 +43,11 @@ function displayCourseClickHandler(e) {
 		}
 	}
 	request.send();
+	return false;
 }
 
 // Handles user request to display quiz in window
-// Returns: void
+// Returns: false - to avoid default link behaviour
 function displayQuizClickHandler(e) {
 	e.preventDefault();
 	var div = document.getElementById('userContentDiv');
@@ -58,12 +60,33 @@ function displayQuizClickHandler(e) {
 		}
 	}
 	request.send();
+	return false;
 }
 
 // Returns the current window url location
 // returns: Current window url as a string
 function getCurrentAddress() {
 	return window.location.href.substring(0, window.location.href.lastIndexOf('/')+1);
+}
+
+// Handles user request to display grades in window
+// Returns: void
+function gradesClickHandler(e) {
+	e.preventDefault();
+	console.log("grades clicked");
+	var div = document.getElementById('userContentDiv');
+	var address = getCurrentAddress() + "scripts/grades.php";
+	console.log(address);
+	var request = new XMLHttpRequest();
+	request.open("GET", address, true);
+	request.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			div.innerHTML = request.responseText;
+			console.log("Got result: " + request.responseText);
+		}
+	}
+	request.send();
+	return false;
 }
 
 // Initializes the content management scripts
@@ -75,6 +98,7 @@ function init() {
 	} else {
 		// Add student specific listeners
 		document.getElementById('courseRegisterLink').addEventListener('click', registerCourseClickHandler);
+		document.getElementById('gradesLink').addEventListener('click', gradesClickHandler);
 		var courseLinks = document.getElementsByClassName('registeredCourseLink');
 		for (var i = 0; i < courseLinks.length; i++) {
 			courseLinks[i].addEventListener('click', displayCourseClickHandler);
@@ -87,7 +111,7 @@ function init() {
 }
 
 // Handles user request to register in a new course
-// Returns: void
+// Returns: false - to avoid default link behaviour
 function registerCourseClickHandler(e) {
 	// Dont error out by accident
 	e.preventDefault();
@@ -102,4 +126,5 @@ function registerCourseClickHandler(e) {
 		}
 	}
 	request.send();
+	return false;
 }

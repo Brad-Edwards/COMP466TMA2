@@ -214,7 +214,7 @@
 						?>
 						<li><hr></li>
 						<a href="" id="courseRegisterLink"><li>Register</li></a>
-						<a href=""><li>Grades</li></a>					
+						<a href="" id="gradesLink"><li>Grades</li></a>					
 					</ul>
 				</nav>
 				<?php else : ?>
