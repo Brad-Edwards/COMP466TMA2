@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>COMP466 TMA 2</title>
+		<link rel="stylesheet" type="text/css" href="part2/shared/styles.css">
+	</head>
+	<body>
+		<h1>COMP466 TMA 2</h1>
+		<p>Assignment Number: 2<br>Course: COMP466<br>Name: Johnathan (Brad) Edwards<br>Date Completed: August 3, 2021<br>TMA Hours: 59</p>
+		<h1>Part 1</h1>
+		<h2>Overview</h2>
+		<p>Part 1 required the development of an online bookmarking web application using MySQL and PHP. There were several required features:
+			<ul>
+				<li>A thoughtful interface</li>
+				<li>A logo on all pages</li>
+				<li>A welcome message and list of the most popular bookmarks</li>
+				<li>Logged in users should see a list of their own bookmarks</li>
+				<li>Users should be able to add, edit and delete their bookmarks</li>
+				<li>New bookmarks must be validated using JavaScript</li>
+			</ul>
+		</p>
+		<h2>Analysis and Design</h2>
+		<p>Conceptually, I cut the application into three parts. The first part is data persistence, handled by a relational database. The second part is server-based code. The third is client-based code.</p>
+		<h3>Server</h3>
+		<p>I decided to have all three parts based around a single web server that also hosted the relational database. For a little practice, I chose to use a free-tier Amazon Web Services (AWS) t2 micro server running Ubuntu. I spun up the instance, updated it, installed Apache, PHP and MariaDB (a MySQL database), and configured the firewall. I already had an AWS security zone for web servers on my account from a personal project, so I simply assigned the server to that security group. I configured access to the server by SSH using a private key from the command line, FileZilla and MySQL Workbench.</p>
+		<h3>Data Persistence</h3>
+		<p>As required, I used a MySQL database for the purpose of the application. The database design was quite simple. A user table was required for managing login and registration, and for associating bookmarks. I chose to keep urls separate, making the assumption many users may have some of the same bookmarks. This limits data duplication. Bookmarks are tracked in the database through a many-to-many bookmarks table that links users and urls. The scripts used for database creation are linked below. Scripts used to add a database user for the server and seed the database with a user for myself are not included here for security reasons.<p>
+			<ul>
+				<li>MySQL Database Scripts</li>
+				<a href="part1/mysql/create_bookmarks_table.sql" target="_blank"><li>Bookmarks Table</li></a>
+				<a href="part1/mysql/create_db.sql" target="_blank"><li>Create Database</li></a>
+				<a href="part1/mysql/create_urls_table.sql" target="_blank"><li>Create Urls Table</li></a>
+				<a href="part1/mysql/create_users_table.sql" target="_blank"><li>Create Users</li></a>
+			</ul>
+		<h3>Server-Based Code</h3>
+		<p>Ultimately, server based code needed to manage a few functions. One was basic HTML service. The second was database access. And the third URL validation.</p>
+		<p>The reasons for handling the first two functions on the server are self-explanatory. URL validation was handled at the server level was to offer the chance for server-based sanitization of urls if I chose to implement sanity check to prevent SQL-injection. URL validation was also handled server-side to avoid any cross-site access issues in the browser.</p>
+		<a href="part1/index.txt" target="_blank"><h4>index.php</h4></a>
+	</body>
+</html>
