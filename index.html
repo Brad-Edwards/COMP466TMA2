@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<h1>COMP466 TMA 2</h1>
-		<p>Assignment Number: 2<br>Course: COMP466<br>Name: Johnathan (Brad) Edwards<br>Date Completed: August 3, 2021<br>TMA Hours: 59</p>
+		<p>Assignment Number: 2<br>Course: COMP466<br>Name: Johnathan (Brad) Edwards<br>Date Completed: August 3, 2021<br>TMA Hours: 67</p>
 		<h1>Part 1</h1>
 		<h2>Overview</h2>
 		<p>Part 1 required the development of an online bookmarking web application using MySQL and PHP. There were several required features:
@@ -21,22 +21,112 @@
 				<li>New bookmarks must be validated using JavaScript</li>
 			</ul>
 		</p>
+		<h2>User Guide</h2>
+		<p>My TMA 2 Part 1 application is called <a href="part1/index.php" target="_blank">Marked</a>. It is available for use online and this page contains links to the code. Simply click on the login link in the top right of the screen. Click on the register link and fill out the form. You will then be taken to the user landing page. To add a bookmark, type the url into the Add Bookmark bar and hit the Add button. The bookmark will appear in the list in the middle of the screen. To edit a bookmark, click its Edit button and use the form that pops up. Click the Delete button to delete a bookmark.</p>
 		<h2>Analysis and Design</h2>
 		<p>Conceptually, I cut the application into three parts. The first part is data persistence, handled by a relational database. The second part is server-based code. The third is client-based code.</p>
 		<h3>Server</h3>
 		<p>I decided to have all three parts based around a single web server that also hosted the relational database. For a little practice, I chose to use a free-tier Amazon Web Services (AWS) t2 micro server running Ubuntu. I spun up the instance, updated it, installed Apache, PHP and MariaDB (a MySQL database), and configured the firewall. I already had an AWS security zone for web servers on my account from a personal project, so I simply assigned the server to that security group. I configured access to the server by SSH using a private key from the command line, FileZilla and MySQL Workbench.</p>
+		<p>I used git and a private GitHub repository for source control during this assignment. Since the code contains credentials for the database, the GitHub repository could not be made public.</p>
 		<h3>Data Persistence</h3>
 		<p>As required, I used a MySQL database for the purpose of the application. The database design was quite simple. A user table was required for managing login and registration, and for associating bookmarks. I chose to keep urls separate, making the assumption many users may have some of the same bookmarks. This limits data duplication. Bookmarks are tracked in the database through a many-to-many bookmarks table that links users and urls. The scripts used for database creation are linked below. Scripts used to add a database user for the server and seed the database with a user for myself are not included here for security reasons.<p>
 			<ul>
 				<li>MySQL Database Scripts</li>
-				<a href="part1/mysql/create_bookmarks_table.sql" target="_blank"><li>Bookmarks Table</li></a>
 				<a href="part1/mysql/create_db.sql" target="_blank"><li>Create Database</li></a>
 				<a href="part1/mysql/create_urls_table.sql" target="_blank"><li>Create Urls Table</li></a>
 				<a href="part1/mysql/create_users_table.sql" target="_blank"><li>Create Users</li></a>
 			</ul>
 		<h3>Server-Based Code</h3>
-		<p>Ultimately, server based code needed to manage a few functions. One was basic HTML service. The second was database access. And the third URL validation.</p>
+		<p>Ultimately, server-based code needed to manage a few functions. One was basic HTML service. The second was database access. And the third URL validation.</p>
 		<p>The reasons for handling the first two functions on the server are self-explanatory. URL validation was handled at the server level was to offer the chance for server-based sanitization of urls if I chose to implement sanity check to prevent SQL-injection. URL validation was also handled server-side to avoid any cross-site access issues in the browser.</p>
+		<p>In general, discrete functions in the server-based code were cut up into separated PHP files. First, this made the code more modular and re-usable. Second, since the application was meant to use AJAX, separate scripts allowed the user agent to request portions of content that were needed to display in subsections of the webpage, rather than requiring full page loads.</p>
+		<p>Individual scripts and files are discussed below. The script for database access has been excluded since that script contains database credentials</p>
 		<a href="part1/index.txt" target="_blank"><h4>index.php</h4></a>
+		<p>A very simple file. Checks if the user is logged in and if so, which page to show the user.</p>
+		<a href="part1/login.txt" target="_blank"><h4>login.php</h4></a>
+		<p>This script manages the login process. In response to a GET, the script displays the user login box and a link to user registration. In response to a POST from the login form, the script either resets the form or goes through the login workflow. The login workflow consists of verifying the user exists and then checking the user's password using PHP's password_verify function. If the right credentials were provided, the script sets session variables that indicate the user is logged in and store the username for use by other scripts.</p>
+		<a href="part1/mostPopular.txt" target="_blank"><h4>mostPopular.php</h4></a>
+		<p>This simple script fetches the most popular links from the database. In the MySQL query, bookmarks are joined with their URLs. Then url appearances are counted and the results are put in descending order. The top ten results are kept and displayed.</p>
+		<a href="part1/navbar.txt" target="_blank"><h4>navbar.php</h4></a>
+		<p>This is another simple script. It displays a title, which functions a logo for the site. It also displays a login/register button if nobody is logged in, or a log out button if there is a user logged in.</p>
+		<a href="part1/register.txt" target="_blank"><h4>register.php</h4></a>
+		<p>Conceptually, the registration workflow is very simple. The script displays a registration form, validates user input and inserts a new user into the database. User input validation would have been a lot easier to do client-side in JavaScript, but it was interesting exercise for me to figure out how to do it purely server-side. And even if there was client-side validation, user input would need to be re-validated since a malicious user could manipulate the client-side code or create their own POST messages to the script. Still, the process of creating and displaying useful error messages to the client was a pain and I would not likely do that aspect of validation on the server-side again unless much wiser heads than I insisted the right design pattern was server-side.</p>
+		<a href="part1/userLinks.txt" target="_blank"><h4>userLinks.php</h4></a>
+		<p>Once again, modularity allowed the use of many simple scripts. This is yet another one. The script queries the database for the logged in user's bookmarks and then inserts them into a table. The table includes buttons for editing and delete bookmarks, however that process was not managed from this script. Those buttons were enabled using userLinks.js and bookmarker.php, both of which are discussed below.</p>
+		<a href="part1/scripts/userLinks.txt" target="_blank"><h4>userLinks.js</h4></a>
+		<p>This script manages displaying the user's bookmarks from the client side. It attaches listeners to all of the interface buttons (i.e. add, delete, edit) and expresses the user's intent to the server through the bookmarker.php script. It also handles refreshing the display of the user's bookmarks without updating the rest of the screen.</p>
+		<a href="part1/scripts/bookmarks.txt" target="_blank"><h4>bookmarker.php</h4></a>
+		<p>This script implements the logic for adding, deleting and editing user bookmarks. It receives HTTP calls with parameters mediated by userLinks.js on the client side. The script checks the user is logged and exists, then performs whatever action is requested.</p>
+		<p>In a real application I would have spent a lot more time focused on cleaning user input. I chose not to deal much with security for the assignment mainly to save time.</p>
+		<p>The add and edit bookmark SQL queries were written as transactions because they involve changes to multiple tables. With a transaction I do not run the risk of partial updates to the database leaving it in an invalid state. I will admit that working out the queries in this script and others took longer than I expected. I used my MySQL Workbench to create queries, test them and check the database status. Truth is, I have a lot to learn about MySQL!</p>
+		<h4>database_manager.php</h4>
+		<p>Rather than write and re-write the little bit of code needed to access the database, I put it all into one script that other scripts could include. All this script does is offer methods to create and close a mysqli connection.</p>
+		<a href="part1/scripts/validateUrl.txt" target="_blank"><h4>validateUrl.php</h4></a>
+		<p>This very short script uses PHP's curl integration to check if a url leads to an active site. It returns the status code to the calling script for it to decide what to do.</p>
+		<a href="part1/shared/styles.css" target="_blank"><h4>styles.css</h4></a>
+		<p>There is nothing exceptional in this file. It contains the styles for the entire application. Flex containers are used for ordering content but other than that it is bog standard CSS. If I were designing the application for production from the ground up I would spend a lot of time designing my CSS classes and ID elements. I would also keep an inventory of them. It is just too easy to end up with multiple overlapping classes and selectors.</p>
+		<h1>Part 2</h1>
+		<h2>Overview</h2>
+		<p>Part 2 required the development of an online learning management system and an educational markup language (EML). The system is required to accept and parse courses written in the EML, display courses to students and allow students to complete quizzes for each course.
+		<h2>User Guide</h2>
+		<p>My TMA 2 Part 2 application is called <a href="part2/index.php" target="_blank">Studious</a>. It is available for use online and this page contains links to the code. Simply click on the login link in the top right corner of the screen. Click on the register link and fill out the form. The tutor can either register new users or can use the credentials provided in the README file submitted through the course website.</p>
+		<p>If you register as an instructor, you will be taken to the instructor landing page where you can add a course written in the EML I developed for this project. The add course link on the left side of the screen will prompt the instructor for an xml file containing a new course to be added to the database. Provided the course is written in valid XML, the course will be added and made available for student registration.</p>
+		<p>If you register as a student, you will be taken to the student landing page where you can register for courses, check your grades, view course material or take quizzes. Click on the links in the sidebar on the left to use each function. Registering for a course is simply a matter of picking an available course from a dropdown menu in a form.</p>
+		<h2>Analysis and Design</h2>
+		<p>I conceived of this application as a simple server-based web application with a persistent data store. The client- and server-side code were to cooperate to deliver the application while a relational database would persist data.</p>
+		<h3>Data Persistence</h3>
+		<p>The assignment instructions indicated some students used a simple single table for storing courses. Instead, I designed the EML and database with each other in mind. EML entities would correspond to database tables, making application design and implementation easier by having it share a single model for the developer; myself.</p>
+		<p>The solution is over-engineered for the purposes of this assignment. However, I wanted the practice designing something with just a little bit of thought for the future use.</p>
+		<p>The users table stores information necessary to manage login and identify the user's category. Currently those categories are student or instructor, but this design allows for adding different categories later, such as tutors, auditing students, etc. The user categories table stores the available categories. The instructors and students tables are available to track information specific to those categories of users and to make certain queries easier. That may be lazy SQL writing but it did make my life simpler when I was writing the code.</p>
+		<p>Courses were stored using the courses table as the base. Basic course information is stored as plain text, but summary, introduction and contents are stored in EML for parsing and display. I experimented with cutting up the course content into a sections and subsection table, however the complexity increased faster than was reasonable for the purpose of the assignment. I think it would be ideal to store sections and subsections in their own separate tables, both to allow reuse between course versions or courses and to allow for section or subsection level data analytics on courses. However, this was beyond the scope of the assignment and I settled for the simple expedient of storing contents together. I did separate the quizzes out to make grade tracking easier, along with assignment tracking.</p>
+		<p>Separate tables were used to track course grades, sessions (course registrations), and session instructors. Again, this was more complex than required for the assignment. If I was designing for a real system the design would have needed more time and refinement, and it could have been a lot simpler for the purpose of the course.</p>
+		<p>What I found most difficult while designing the data model was keeping myself focused on the scope of the assignment and not over-designing. I kept going back and forth between thinking about a production-style system and an assignment-scale system. What came out was somewhat confused, but some insight into how easily small conceptual confusions can derail design processes.</p>
+		<h2>EML</h2>
+		<p>The EML for this assignment is specified in several XSD documents which combined, compose a course. The core of a course specified in the EML is the course_type. The rest of the XSD documents specify types used in the course_type. I separated the types out into separate XSD documents as practice for modular XML design.</p>
+		<a href="part2/xml/course_type.xsd" target="_blank"><h4>course_type.xsd</h4></a>
+		<p>This type specifies the overall structure of a course. A course has a name, code, set of instructors, summary, objectives, introduction, sections, assignments and quizzes. Most of these are types specified in other XSD documents.</p>
+		<a href="part2/xml/instructor_type.xsd" target="_blank"><h4>instructor_type.xsd</h4></a>
+		<p>This type stores three simple pieces of information; an instructor ID, first name and last name. The instructor ID is the same ID that should be stored in the application database.</p>
+		<a href="part2/xml/paragraph_type.xsd" target="_blank"><h4>paragraph_type.xsd</h4></a>
+		<p>One of the atoms of content of any kind in the EML is the paragraph_type. It can hold text with varying levels of indent, line breaks or lists. This type is used for content in several other types.</p>
+		<a href="part2/xml/section_type.xsd" target="_blank"><h4>section_type.xsd</h4></a>
+		<p>Course content is comprised of section_type instances. The section's order within the course and title are specified. Each section_type may contain any number of three kinds of content; paragraph_types, images or subsections. This allows for fairly complex section designs with levels of hierarchy.</p>
+		<a href="part2/xml/subsection_type.xsd" target="_blank"><h4>subsection_type.xsd</h4></a>
+		<p>This type was designed to allow for hierarchy within sections. Sections may contain subsections, which may themselves contain subsections. Each subsection has an order, hierachy level to assist with styling, title then three types of content that mirror section_type contents; paragraph_types, images or subsection_types.</p>
+		<a href="part2/xml/assignment_type.xsd" target="_blank"><h4>assignment_type.xsd</h4></a>
+		<p>I did not end up needing or using the assignment_type since it was outside the course assignment parameters. However the type allowed for order, title, weighting and instructions to be specified by the course writer.</p>
+		<a href="part2/xml/quiz_type.xsd" target="_blank"><h4>quiz_type.xsd</h4></a>
+		<p>The quiz type allows order, title and weight data to be specified. The meat of the quiz is the series of quiz_question_type instances the course writer can add. The quiz_type and quiz_question_type are decomposed into data that is stored in the database. Originally, I was going to decompose the quizzes table so that quiz questions were stored separately from the quizzes. That would allow quiz questions to be reused and analytics to be attached in the future. However, it also made implementation more complicated so for the purpose of the course I did not end up making use of the flexibility this type allowed.</p>
+		<a href="part2/xml/quiz_question_type.xsd"><h4>quiz_question_type.xsd</h4></a>
+		<p>The quiz_question_type stores the question's order in the quiz, the question text, options and the correct answer. The question could be used for multiple choice questions or longer form questions since tehre is no limit on the text that can be put in the answer field.
+		<h3>Code</h3>
+		<a href="part2/index.txt" target="_blank"><h4>index.php</h4></a>
+		<p>This script checks whether the user is logged in or not and content differently based on the result. If the user is not logged in, a welcome message is displayed. Otherwise the script includes the content.php script which does the majority of the work of the application.</p>
+		<a href="part2/scripts/navbar.txt" target="_blank"><h4>navbar.php</h4></a>
+		<p>This script was taken wholesale from part 1 of this assignment. It shows the application title and either the login button or the user's name depending on their login state.</p>
+		<a href="part2/scripts/login.txt" target="_blank"><h4>login.php</h4></a>
+		<p>This script was also taken from part 1 of this assignment. The script displays an HTML form that accepts user credentials and checks them against the database for login. A link to the registration form is also included in case the visitor is not logged in yet.</p>
+		<a href="part2/scripts/register.txt" target="_blank"><h4>register.php</h4></a>
+		<p>This script was modified only slightly from part 1 of this assignment to account for the different information required by this application. Specifically, the form here allows the user to specify their role as a student or instructor.</p>
+		<a href=""><h4>database.php</h4></a>
+		<p>This script is included in the zip file submitted through the course website but the code is not available here for security reasons. The script includes two functions, one for opening and one for closing database connections.</p>
+		<a href="part2/scripts/welcome.txt" target="_blank"><h4>welcome.php</h4></a>
+		<p>This extremely simple script just shows a generic welcome message when the application is visited and nobody is logged in.</p>
+		<a href="part2/scripts/content.txt" target="_blank"><h4>content.php</h4></a>
+		<p>This script does a lot of the work for the application. It includes the EML/XML parser required by the part 2 of the assignment. The parser is encapsulated in the function addCourse. The function accepts an XML object containing the course data. PHP has a couple of options for parsing XML. I chose to use simpleXML because it is both included in PHP out of the box and it is simple. With the course data loaded as a simpleXML instance it can be queried easily for parsing.</p>
+		<p>The function checks instructors are specified and that their instructor IDs exist since otherwise the database would be in an invalid state.</p>
+		<p>Once this is done, the function begins breaking up the course EML into the separate pieces needed for the database. Course name, code, summary, introduction, content and quizzes are stored in separate variables. Illegal characters are escaped to prevent SQL errors. The variables are then interpolated into a SQL transaction. Using a transaction ensures the course is not partially inserted into the database.</p>
+		<p>Beyond the parser, the script is simple. If the user is an instructor, the script displays a link for adding courses. If the user is a student, a sidebar is displayed with links for courses the user has registered in, a link for registering and one for checking grades.</p>
+		<a href="part2/scripts/contentjs.txt" target="_blank"><h4>content.js</h4></a>
+		<p>This script attaches the appropriate click behaviour to the links on the screen, allowing for AJAX requests to be used in updating the main content area rather than reloading the entire page each time. The script runs when the page is loaded.</p>
+		<a href="part2/scripts/course_register.txt" target="_blank"><h4>course_register.php</h4></a>
+		<p>Course registration is done through this script, which is accessed via a link when user content is displayed. The script displays a form that allows the user to choose which course to register in from a list of courses available in the database. There is no logic for which courses to display, the script queries the database for available courses and their course IDs. When the user selects a course, the course ID is posted back to the same script. On post, the script uses the username stored as a session variable to get the user's student ID. The script then updates the database to log the user's course registration and takes them back to the content page.</p>
+		<a href="part2/scripts/display_course.txt" target="_blank"><h4>display_course.php</h4></a>
+		<p>This script does some EML/XML parsing for the purpose of displaying a chosen course. The ID for the course to display is received as a variable in the GET request. That ID is used to query the database for the course content. The content is parsed using simpleXML and interpolated into the strings that comprise the final XML for display. The script simply loops through received content and creates static HTML.</p>
+		<a href="part2/scripts/display_quiz.txt" target="_blank"><h4>display_quiz.php</h4></a>
+		<p>In response to a GET request, this script creates and displays quizzes for the user. A database query is used to pull down the requested quiz. The script loops through the quiz questions to create a form for displaying each multiple choice question. Quiz questions are named dynamically so the user's answers can be distinguished when it's time to grade the quiz. Dynamically named hidden fields are used to hold answers to each quiz question for use in gradin the quiz. When the user submits the quiz it is posted back to this form.<p>
+		<p>In response to a POST request, the script cycles through the form's questions and answers and grades them. The script then inserts the user's grade into the database so the user can view it at a later time.</p>
+		<a href="part2/scripts/grades.txt" target="_blank"><h4>grades.php</h4></a>
+		<p>This script executes a SQL query that fetches stored grades and basic course information so it can all be displayed to the user. The script loops through the results, composes simple HTML and displays it.</p>
 	</body>
 </html>

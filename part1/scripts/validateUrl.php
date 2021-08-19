@@ -28,8 +28,8 @@
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		// Follow redirects since everything points from http -> https these days
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		// Short timeout for snappy response. Doing it async and moving the UI along before
-		// a respone would be the cool kid thing to do
+		// Short timeout for snappy response. Having the client-side code run async and 
+		// not care how long it takes would be the cool kid thing to do.
 		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 		$response = curl_exec($ch);
 		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);

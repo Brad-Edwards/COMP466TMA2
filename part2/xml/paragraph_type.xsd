@@ -13,7 +13,6 @@
 						<xs:attribute name="indent" type="xs:integer" use="optional" />
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="indent" type="xs:string" />
 				<xs:element name="break" type="xs:string" />
 				<xs:element name="list">
 					<xs:complexType>
