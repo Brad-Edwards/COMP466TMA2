@@ -16,6 +16,8 @@ Observations:
 
 5. Did I mention frameworks and libraries? Doing these projects this way when I know JQuery, Node.JS, AngularJS, React and all the rest are out there was a little painful. I understand the purpose of the exercise, but from what I read JavaScript development is so entwined with frameworks and libraries that I think leaving them out may do more harm than good.
 
+6. This is not sterling code. My inexperience shows, and it is a bit painful to put it out there. But it will be something to look back on and show progress over time.
+
 Assignment 2:
 
 Part 1
